@@ -4,7 +4,7 @@
     using System.ComponentModel.DataAnnotations;
     public class Watch
     {
-        public int RefNum { get; set; }
+        public string RefNum { get; set; }
         [Required]
         [MaxLength(12)]
         public string Brand { get; set; }
