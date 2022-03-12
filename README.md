@@ -1,3 +1,3 @@
 # LuxWatch
 Luxury Watches - Project
-Nitrum Gagata i VELKO
+.Nitrum Gagata i VELKO
