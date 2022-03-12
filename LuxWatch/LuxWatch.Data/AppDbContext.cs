@@ -12,7 +12,7 @@
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionString = "Server=DESKTOP-QNNJ5J4\\SQLEXPRESS;Database=luxWatchDb;Trusted_Connection=True;";
+            string connectionString = "Server=.\\SQLEXPRESS;Database=luxWatchDb;Trusted_Connection=True;";
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(connectionString);

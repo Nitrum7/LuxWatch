@@ -4,10 +4,12 @@
     using System.ComponentModel.DataAnnotations;
     public class Watch
     {
-        public string RefNum { get; set; }
         [Required]
         [MaxLength(12)]
+        public string RefNum { get; set; }
+        [Required]
         public string Brand { get; set; }
+        [Required]
         public string Model { get; set; }
         public int Size { get; set; }
         public string Material { get; set; }
