@@ -1,20 +1,35 @@
 ﻿namespace LuxWatch.Model
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     public class Watch
     {
+        public int Id { get; set; }
+
         [Required]
         [MaxLength(12)]
         public string RefNum { get; set; }
+
         [Required]
-        public string Brand { get; set; }
+        public int BrandId { get; set; }
+        public virtual Brand Brand { get; set; }
+
         [Required]
         public string Model { get; set; }
+        [Required]
         public int Size { get; set; }
-        public string Material { get; set; }
+        [Required]
+        public int MaterialId { get; set; }
+        public virtual Material Material { get; set; }
+
+        public int CategoryId { get; set; }
+        public virtual Category Category { get; set; }
         public int Year { get; set; }
-        public virtual ICollection<Order> Orders { get; set; } = new HashSet<Order>();
-        public virtual ICollection<Store> Stores { get; set; } = new HashSet<Store>();
+
+        [Required]
+        public decimal Price { get; set; }
+
+
     }
 }

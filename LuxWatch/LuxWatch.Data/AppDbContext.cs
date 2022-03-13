@@ -4,15 +4,16 @@
     using Microsoft.EntityFrameworkCore;
     public class AppDbContext : DbContext
     {
-        public virtual DbSet<City> Cities { get; set; }
-        public virtual DbSet<Order> Rents { get; set; }
-        public virtual DbSet<Store> Stores { get; set; }
-        public virtual DbSet<Watch> Scooters { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+       
+        public virtual DbSet<Watch> Watches { get; set; }
+        public virtual DbSet<Brand> Brands { get; set; }
+        public virtual DbSet<Material> Materials { get; set; }
+        public virtual DbSet<Category> Categorys { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionString = "Server=.\\SQLEXPRESS;Database=luxWatchDb;Trusted_Connection=True;";
+            string connectionString = "Server=.;Database=luxWatchDb;Trusted_Connection=True;";
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(connectionString);
