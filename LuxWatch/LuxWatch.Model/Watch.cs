@@ -19,6 +19,7 @@
         public virtual Material Material { get; set; }
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
+        public string ImageUrl { get; set; } = "https://freepngimg.com/thumb/coming_soon/4-2-coming-soon-png.png";
         public int Year { get; set; }
         [Required]
         public decimal Price { get; set; }
