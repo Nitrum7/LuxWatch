@@ -8,7 +8,7 @@
         public virtual DbSet<Watch> Watches { get; set; }
         public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<Material> Materials { get; set; }
-        public virtual DbSet<Category> Categorys { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
