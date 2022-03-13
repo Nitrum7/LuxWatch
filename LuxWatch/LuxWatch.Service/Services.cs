@@ -181,5 +181,10 @@
             context.SaveChanges();
         }
 
+        public void PrintWatch(Watch watch)
+        {
+            Console.WriteLine($"Reference Number: {watch.RefNum}\nBrand: {watch.Brand}\nModel: {watch.Model}\nSize: {watch.Size}\nMaterial: {watch.Material}\nCategory: {watch.Category}\nYear: {watch.Year}\nPrice: {watch.Price}");
+        }
+
     }
 }
