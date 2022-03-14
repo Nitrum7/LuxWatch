@@ -6,6 +6,7 @@
     using System.Linq;
     using System.Collections.Generic;
     using System;
+    using System.ComponentModel.DataAnnotations;
 
     public class Services
     {
@@ -23,7 +24,11 @@
             {
                 throw new ArgumentException("Invalid reference number!");
             }
-            Watch watch = this.context.Watches.FirstOrDefault(x=>x.RefNum==refnum);
+            Watch watch = this.context.Watches.FirstOrDefault(x => x.RefNum == refnum);
+            if (watch == null)
+            {
+                throw new ArgumentException("Invalid reference number!");
+            }
             return watch;
         }
 
@@ -32,16 +37,18 @@
             return this.context.Brands.Select(x => x.Name).ToArray();
         }
 
-        public List<Watch> GetWatchesByBrand(string brand)
+        public ICollection<Watch> GetWatchesByBrand(string brand)
         {
             if (string.IsNullOrWhiteSpace(brand))
             {
                 throw new ArgumentException("Invalid brand name!");
+                
             }
-            List<Watch> watches = this.context.Watches.Where(x => x.Brand.Name == brand).ToList();
+            ICollection<Watch> watches = this.context.Watches.Where(x => x.Brand.Name == brand).ToArray();
             if (!watches.Any())
             {
                 throw new ArgumentException("Not existing brand!");
+                
             }
             return watches;
         }
@@ -53,13 +60,13 @@
                 throw new ArgumentException("Invalid reference number!");
             }
 
-            if (!int.TryParse(brand, out _))
+            if (string.IsNullOrWhiteSpace(brand))
             {
-                throw new ArgumentException("Invalid Brand!");
+                throw new ArgumentException("Invalid brand name!");
             }
-            else if (int.Parse(brand) < 1 || int.Parse(brand) > 9)
+            if (this.context.Watches.Where(x => x.Brand.Name == brand) == null)
             {
-                throw new ArgumentException("Invalid Brand!");
+                throw new ArgumentException("Not existing brand!");
             }
 
             if (string.IsNullOrWhiteSpace(model))
@@ -67,22 +74,21 @@
                 throw new ArgumentException("Invalid watch model!");
             }
 
-            if (!int.TryParse(material, out _))
+            if (string.IsNullOrWhiteSpace(material))
             {
-                throw new ArgumentException("Invalid Material!");
+                throw new ArgumentException("Invalid material!");
             }
-            else if (int.Parse(material) < 1 || int.Parse(material) > 7)
+            if (this.context.Watches.Where(x => x.Material.Type == material) == null)
             {
-                throw new ArgumentException("Invalid Material!");
+                throw new ArgumentException("Not existing material!");
             }
-
-            if (!int.TryParse(category, out _))
+            if (string.IsNullOrWhiteSpace(category))
             {
-                throw new ArgumentException("Invalid Category!");
+                throw new ArgumentException("Invalid category!");
             }
-            if (int.Parse(category) < 1 || int.Parse(category) > 3)
+            if (this.context.Watches.Where(x => x.Category.Sex == category) == null)
             {
-                throw new ArgumentException("Invalid Category!");
+                throw new ArgumentException("Not existing category!");
             }
 
             if (!int.TryParse(size, out _))
@@ -105,12 +111,13 @@
             }
 
 
-            Watch watch = new Watch() {
+            Watch watch = new Watch()
+            {
                 RefNum = refNum,
-                BrandId = int.Parse(brand),
+                BrandId = GettBrandIdbyName(brand),
                 Model = model,
-                MaterialId = int.Parse(material),
-                CategoryId = int.Parse(category),
+                MaterialId = GetMaterialIdbyType(material),
+                CategoryId = GetCategoryIdbySex(category),
                 Size = int.Parse(size),
                 Year = int.Parse(year),
                 Price = decimal.Parse(price)
@@ -119,10 +126,64 @@
             context.Watches.Add(watch);
             context.SaveChanges();
         }
+        public int GetCategoryIdbySex(string sex)
+        {
+            int Id = 1;
+            var a = this.context.Categories.Where(x => x.Sex != null).ToList();
+            foreach (var name in a)
+            {
+                if (sex != name.Sex)
+                {
+                    Id++;
+                    
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return Id;
+        }
+        public int GetMaterialIdbyType(string type)
+        {
+            int Id = 1;
+            var a = this.context.Materials.Where(x => x.Type != null).ToList();
+            foreach (var name in a)
+            {
+                if (type != name.Type)
+                {
+                    Id++;
 
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return Id;
+        }
+        public int GettBrandIdbyName(string name)
+        {
+            int Id = 1;
+            var a = this.context.Brands.Where(x => x.Name != null).ToList();
+            foreach (var brand in a)
+            {
+                if (name != brand.Name)
+                {
+                    Id++;
+
+                }
+                else
+                {
+                    break;
+                }
+                
+            }
+            return Id;
+        }
         public void UpdateWatchPrice(string watchrefnum, string price)
         {
-            
+
             if (string.IsNullOrWhiteSpace(watchrefnum))
             {
                 throw new ArgumentException("Invalid reference number!");
@@ -139,7 +200,7 @@
         }
         public void UpdateProductImageUrl(string watchrefnum, string url)
         {
-            
+
             if (string.IsNullOrWhiteSpace(watchrefnum))
             {
                 throw new ArgumentException("Invalid reference number!");
@@ -169,7 +230,7 @@
 
         public void DeleteWatch(string watchrefnum)
         {
-           
+
             if (string.IsNullOrWhiteSpace(watchrefnum))
             {
                 throw new ArgumentException("Invalid reference number!");
@@ -183,6 +244,7 @@
         {
             Console.WriteLine($"Reference Number: {watch.RefNum}\nBrand: {watch.Brand.Name}\nModel: {watch.Model}\nSize: {watch.Size}\nMaterial: {watch.Material.Type}\nCategory: {watch.Category.Sex}\nYear: {watch.Year}\nPrice: {watch.Price}");
         }
+
 
     }
 }

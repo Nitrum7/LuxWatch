@@ -25,9 +25,9 @@
             {
                 try
                 {
-                    Console.WriteLine("Select WC(To get watches' count)\nGW(To find a watch by reference number)\nGBN(To get all available brands)\nGWBB(To get all watches by their brand)\nAW(To add a watch)\nUP(To update a watch's price)\nUS(To update a watch's size)\nDW(To delete a watch)");
+                    Console.WriteLine("\nSelect WC(To get watches' count)\nGW(To find a watch by reference number)\nGBN(To get all available brands)\nGWBB(To get all watches by their brand)\nAW(To add a watch)\nUP(To update a watch's price)\nUS(To update a watch's size)\nDW(To delete a watch)");
                     string option = Console.ReadLine().ToUpper();
-                    //Console.Clear();
+
                     switch (option)
                     {
                         case "WC":
@@ -40,7 +40,7 @@
                             GetBrandsName();
                             break;
                         case "GWBB":
-                            GetWatchByBrand();
+                            GetWatchesByBrand();
                             break;
                         case "AW":
                             AddWatch();
@@ -57,7 +57,7 @@
                     }
 
                 }
-                catch(Exception ex)
+                catch (ArgumentException ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
@@ -67,8 +67,8 @@
 
         public void GetWatchesCount()
         {
-            Console.WriteLine(services.WatchCount());
-            Console.ReadLine();
+            Console.WriteLine($"Waches Count{services.WatchCount()}");
+            
         }
 
         public void GetWatch()
@@ -76,26 +76,28 @@
             Console.WriteLine("Input watch reference number:");
             string input = Console.ReadLine();
             services.PrintWatch(services.GetWatch(input));
+            
         }
 
         public void GetBrandsName()
         {
-            foreach (var b in services.GetBrandsName()) 
+            foreach (var b in services.GetBrandsName())
             {
                 Console.WriteLine(b.ToString());
             }
-            Console.ReadLine();
+            
         }
 
-        public void GetWatchByBrand()
+        public void GetWatchesByBrand()
         {
-            Console.WriteLine("Input brand:");
+            Console.WriteLine("Input brand: ");
             string brand = Console.ReadLine();
 
             foreach (var w in services.GetWatchesByBrand(brand))
             {
                 services.PrintWatch(w);
             }
+            
         }
 
         public void AddWatch()
@@ -134,6 +136,7 @@
 
             services.AddWatch(refnum, brand, model, material, category, size, year, price);
             Console.WriteLine("Watch Added Successfully!");
+            
         }
 
         public void UpdatePrice()
@@ -145,6 +148,7 @@
 
             services.UpdateWatchPrice(refNum, price);
             Console.WriteLine("Watch Price Updated Successfully!");
+            
         }
 
         public void UpdateSize()
@@ -155,7 +159,8 @@
             string size = input.Split(' ')[1];
 
             services.UpdateWatchSize(refNum, size);
-            Console.WriteLine("Watch Price Updated Successfully!");
+            Console.WriteLine("Watch Size Updated Successfully!");
+           
         }
 
         public void DeleteWatch()
@@ -163,6 +168,8 @@
             Console.WriteLine("Input Watch Reference Number:");
             string refnum = Console.ReadLine();
             services.DeleteWatch(refnum);
+            Console.WriteLine("Watch Successfully Deleted!");
+            
         }
     }
 }
