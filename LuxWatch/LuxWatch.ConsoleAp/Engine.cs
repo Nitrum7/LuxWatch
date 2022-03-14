@@ -25,7 +25,7 @@
             {
                 try
                 {
-                    Console.WriteLine("Select WC(To get watch count) GW(To find watch by refernce number) GBN(To get all brands) GWBB(To get all watch by brand) AW(To add watch) UP(To update watch price) US(To update watch size) DW(To delete watch)");
+                    Console.WriteLine("Select WC(To get watches' count)\nGW(To find a watch by reference number)\nGBN(To get all available brands)\nGWBB(To get all watches by their brand)\nAW(To add a watch)\nUP(To update a watch's price)\nUS(To update a watch's size)\nDW(To delete a watch)");
                     string option = Console.ReadLine().ToUpper();
                     //Console.Clear();
                     switch (option)

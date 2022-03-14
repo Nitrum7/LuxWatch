@@ -34,18 +34,16 @@
 
         public List<Watch> GetWatchesByBrand(string brand)
         {
-           
-            if (!int.TryParse(brand, out _))
+            if (string.IsNullOrWhiteSpace(brand))
             {
-                throw new ArgumentException("Invalid Brand!");
+                throw new ArgumentException("Invalid brand name!");
             }
-            else if (int.Parse(brand) < 1 || int.Parse(brand) > 9)
+            List<Watch> watches = this.context.Watches.Where(x => x.Brand.Name == brand).ToList();
+            if (!watches.Any())
             {
-                throw new ArgumentException("Invalid Brand!");
+                throw new ArgumentException("Not existing brand!");
             }
-             List <Watch> watches = this.context.Watches.Where(x => x.Brand.Name == brand).ToList();
             return watches;
-
         }
 
         public void AddWatch(string refNum, string brand, string model, string material, string category, string size, string year, string price)
@@ -183,7 +181,7 @@
 
         public void PrintWatch(Watch watch)
         {
-            Console.WriteLine($"Reference Number: {watch.RefNum}\nBrand: {watch.Brand}\nModel: {watch.Model}\nSize: {watch.Size}\nMaterial: {watch.Material}\nCategory: {watch.Category}\nYear: {watch.Year}\nPrice: {watch.Price}");
+            Console.WriteLine($"Reference Number: {watch.RefNum}\nBrand: {watch.Brand.Name}\nModel: {watch.Model}\nSize: {watch.Size}\nMaterial: {watch.Material.Type}\nCategory: {watch.Category.Sex}\nYear: {watch.Year}\nPrice: {watch.Price}");
         }
 
     }
