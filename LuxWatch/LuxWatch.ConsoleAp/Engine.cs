@@ -54,6 +54,18 @@
                         case "DW":
                             DeleteWatch();
                             break;
+                        case "AM":
+                            AddMaterial();
+                            break;
+                        case "AB":
+                            AddBrand();
+                            break;
+                        case "DB":
+                            DeleteBrand();
+                            break;
+                        case "DM":
+                            DeleteMaterial();
+                            break;
                     }
 
                 }
@@ -98,6 +110,20 @@
                 services.PrintWatch(w);
             }
             
+        }
+        public void AddMaterial()
+        {
+            Console.WriteLine("Input materal type: ");
+            string materal = Console.ReadLine();
+            services.AddMaterial(materal);
+            Console.WriteLine("Material Successfully Added!");
+        }
+        public void AddBrand()
+        {
+            Console.WriteLine("Input brand name: ");
+            string name = Console.ReadLine();
+            services.AddBrand(name);
+            Console.WriteLine("Brand Successfully Added!");
         }
 
         public void AddWatch()
@@ -170,6 +196,22 @@
             services.DeleteWatch(refnum);
             Console.WriteLine("Watch Successfully Deleted!");
             
+        }
+        public void DeleteBrand()
+        {
+            Console.WriteLine("Input Brand Name:");
+            string name = Console.ReadLine();
+            services.DeleteBrand(name);
+            Console.WriteLine("Brand Successfully Deleted!");
+
+        }
+        public void DeleteMaterial()
+        {
+            Console.WriteLine("Input Material Type:");
+            string type = Console.ReadLine();
+            services.DeleteWatch(type);
+            Console.WriteLine("Material Successfully Deleted!");
+
         }
     }
 }

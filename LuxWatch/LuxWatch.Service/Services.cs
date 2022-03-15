@@ -17,7 +17,32 @@
         {
             return this.context.Watches.Count();
         }
-
+        public Material GetMaterial(string type)
+        {
+            if (string.IsNullOrWhiteSpace(type))
+            {
+                throw new ArgumentException("Invalid type!");
+            }
+            Material material = this.context.Materials.FirstOrDefault(x => x.Type == type);
+            if (material == null)
+            {
+                throw new ArgumentException("Invalid type!");
+            }
+            return material;
+        }
+        public Brand GetBrand(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentException("Invalid name!");
+            }
+            Brand brand = this.context.Brands.FirstOrDefault(x => x.Name == name);
+            if (brand == null)
+            {
+                throw new ArgumentException("Invalid name!");
+            }
+            return brand;
+        }
         public Watch GetWatch(string refnum)
         {
             if (string.IsNullOrWhiteSpace(refnum))
@@ -51,6 +76,74 @@
                 
             }
             return watches;
+        }
+        public void AddBrand(string name)
+        {
+            int count = 1;
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentException("Invalid Brand!");
+            }
+            var a = this.context.Brands.Where(x => x.Name != null).ToList();
+            foreach (var brand1 in a)
+            {
+                if (name != brand1.Name)
+                {
+                    count++;
+
+                }
+            }
+            if (count == a.Count)
+            {
+                throw new ArgumentException("Brand already existng!");
+
+            }
+            else
+            {
+                Brand brand = new Brand()
+                {
+
+                    Name = name
+                };
+                context.Brands.Add(brand);
+                context.SaveChanges();
+            }
+        }
+        public void AddMaterial(string type)
+        {
+            int count = 1;
+            if (string.IsNullOrWhiteSpace(type))
+            {
+                throw new ArgumentException("Invalid material!");
+            }
+            var a = this.context.Materials.Where(x => x.Type != null).ToList();
+            foreach (var material in a)
+            {
+                if (type != material.Type)
+                {
+                    count++;
+
+                }
+                
+
+            }
+            if (count==a.Count)
+            {
+                throw new ArgumentException("Material already existng!");
+                
+            }
+            else
+            {
+                Material materia = new Material()
+                {
+
+                    Type = type
+                };
+                context.Materials.Add(materia);
+                context.SaveChanges();
+            }
+            
+            
         }
 
         public void AddWatch(string refNum, string brand, string model, string material, string category, string size, string year, string price)
@@ -198,7 +291,7 @@
             context.SaveChanges();
 
         }
-        public void UpdateProductImageUrl(string watchrefnum, string url)
+        public void UpdateWatchImageUrl(string watchrefnum, string url)
         {
 
             if (string.IsNullOrWhiteSpace(watchrefnum))
@@ -237,6 +330,28 @@
             }
             var watch = GetWatch(watchrefnum);
             context.Watches.Remove(watch);
+            context.SaveChanges();
+        }
+        public void DeleteMaterial(string type)
+        {
+
+            if (string.IsNullOrWhiteSpace(type))
+            {
+                throw new ArgumentException("Invalid type!");
+            }
+            var materal = GetMaterial(type);
+            context.Materials.Remove(materal);
+            context.SaveChanges();
+        }
+        public void DeleteBrand(string name)
+        {
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentException("Invalid name!");
+            }
+            var brand = GetBrand(name);
+            context.Brands.Remove(brand);
             context.SaveChanges();
         }
 
