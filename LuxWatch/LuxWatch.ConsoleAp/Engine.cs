@@ -1,12 +1,7 @@
 ﻿namespace LuxWatch.ConsoleAp
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using Service;
-    using Model;
 
 
     public class Engine
@@ -25,7 +20,8 @@
             {
                 try
                 {
-                    Console.WriteLine("\nSelect WC(To get watches' count)\nGW(To find a watch by reference number)\nGBN(To get all available brands)\nGWBB(To get all watches by their brand)\nAW(To add a watch)\nUP(To update a watch's price)\nUS(To update a watch's size)\nDW(To delete a watch)");
+                    Console.WriteLine("\nSelect:\nWC(To get watches' count)\nGW(To find a watch by reference number)\nGBN(To get all available brands)\nGWBB(To get all watches by their brand)\nAW(To add a watch)\nUP(To update a watch's price)" +
+                        "\nUS(To update a watch's size)\nDW(To delete a watch)\nAM(Add new material)\nAB(Add new brand)\nDB(Delete a brand)\nDM(Delete a material)\nQ(quit application)");
                     string option = Console.ReadLine().ToUpper();
 
                     switch (option)
@@ -65,6 +61,9 @@
                             break;
                         case "DM":
                             DeleteMaterial();
+                            break;
+                        case "Q":
+                            Environment.Exit(0);
                             break;
                     }
 
@@ -113,7 +112,7 @@
         }
         public void AddMaterial()
         {
-            Console.WriteLine("Input materal type: ");
+            Console.WriteLine("Input material type: ");
             string materal = Console.ReadLine();
             services.AddMaterial(materal);
             Console.WriteLine("Material Successfully Added!");
@@ -209,7 +208,7 @@
         {
             Console.WriteLine("Input Material Type:");
             string type = Console.ReadLine();
-            services.DeleteWatch(type);
+            services.DeleteMaterial(type);
             Console.WriteLine("Material Successfully Deleted!");
 
         }

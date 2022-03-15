@@ -72,7 +72,7 @@
             ICollection<Watch> watches = this.context.Watches.Where(x => x.Brand.Name == brand).ToArray();
             if (!watches.Any())
             {
-                throw new ArgumentException("Not existing brand!");
+                throw new ArgumentException("Not an existing brand!");
                 
             }
             return watches;
@@ -95,7 +95,7 @@
             }
             if (count == a.Count)
             {
-                throw new ArgumentException("Brand already existng!");
+                throw new ArgumentException("Brand already exists!");
 
             }
             else
@@ -122,28 +122,21 @@
                 if (type != material.Type)
                 {
                     count++;
-
-                }
-                
-
+                }              
             }
             if (count==a.Count)
             {
-                throw new ArgumentException("Material already existng!");
-                
+                throw new ArgumentException("Material already exists!");               
             }
             else
             {
                 Material materia = new Material()
                 {
-
                     Type = type
                 };
                 context.Materials.Add(materia);
                 context.SaveChanges();
-            }
-            
-            
+            }                    
         }
 
         public void AddWatch(string refNum, string brand, string model, string material, string category, string size, string year, string price)
@@ -159,7 +152,7 @@
             }
             if (this.context.Watches.Where(x => x.Brand.Name == brand) == null)
             {
-                throw new ArgumentException("Not existing brand!");
+                throw new ArgumentException("Not an existing brand!");
             }
 
             if (string.IsNullOrWhiteSpace(model))
@@ -173,7 +166,7 @@
             }
             if (this.context.Watches.Where(x => x.Material.Type == material) == null)
             {
-                throw new ArgumentException("Not existing material!");
+                throw new ArgumentException("Not an existing material!");
             }
             if (string.IsNullOrWhiteSpace(category))
             {
@@ -181,7 +174,7 @@
             }
             if (this.context.Watches.Where(x => x.Category.Sex == category) == null)
             {
-                throw new ArgumentException("Not existing category!");
+                throw new ArgumentException("Not an existing category!");
             }
 
             if (!int.TryParse(size, out _))
@@ -221,49 +214,47 @@
         }
         public int GetCategoryIdbySex(string sex)
         {
-            int Id = 1;
+            int id = 1;
             var a = this.context.Categories.Where(x => x.Sex != null).ToList();
             foreach (var name in a)
             {
                 if (sex != name.Sex)
                 {
-                    Id++;
-                    
+                    id++;                   
                 }
                 else
                 {
                     break;
                 }
             }
-            return Id;
+            return id;
         }
         public int GetMaterialIdbyType(string type)
         {
-            int Id = 1;
+            int id = 1;
             var a = this.context.Materials.Where(x => x.Type != null).ToList();
             foreach (var name in a)
             {
                 if (type != name.Type)
                 {
-                    Id++;
-
+                    id++;
                 }
                 else
                 {
                     break;
                 }
             }
-            return Id;
+            return id;
         }
         public int GettBrandIdbyName(string name)
         {
-            int Id = 1;
+            int id = 1;
             var a = this.context.Brands.Where(x => x.Name != null).ToList();
             foreach (var brand in a)
             {
                 if (name != brand.Name)
                 {
-                    Id++;
+                    id++;
 
                 }
                 else
@@ -272,7 +263,7 @@
                 }
                 
             }
-            return Id;
+            return id;
         }
         public void UpdateWatchPrice(string watchrefnum, string price)
         {
