@@ -61,6 +61,14 @@
         {
             return this.context.Brands.Select(x => x.Name).ToArray();
         }
+        public string[] GetMaterialType()
+        {
+            return this.context.Materials.Select(x => x.Type).ToArray();
+        }
+        public Watch[] GetAllWatches()
+        {
+            return this.context.Watches.OrderBy(x => x.Model).ToArray();
+        }
 
         public ICollection<Watch> GetWatchesByBrand(string brand)
         {
@@ -76,6 +84,13 @@
                 
             }
             return watches;
+        }
+        public ICollection<Watch> GetWatches(int page = 1, int itemsPerPage = 3)
+        {
+            return this.context.Watches
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage)
+                .ToList();
         }
         public void AddBrand(string name)
         {
@@ -346,11 +361,14 @@
             context.SaveChanges();
         }
 
+        public string PrintWatchForm(Watch watch)
+        {
+            return ($"Reference Number: {watch.RefNum}\nBrand: {watch.Brand.Name}\nModel: {watch.Model}\nSize: {watch.Size}\nMaterial: {watch.Material.Type}\nCategory: {watch.Category.Sex}\nYear: {watch.Year}\nPrice: {watch.Price}\n{new string('-',50)}\n");
+        }
         public void PrintWatch(Watch watch)
         {
             Console.WriteLine($"Reference Number: {watch.RefNum}\nBrand: {watch.Brand.Name}\nModel: {watch.Model}\nSize: {watch.Size}\nMaterial: {watch.Material.Type}\nCategory: {watch.Category.Sex}\nYear: {watch.Year}\nPrice: {watch.Price}");
         }
-
 
     }
 }
