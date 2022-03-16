@@ -17,6 +17,16 @@
         {
             return this.context.Watches.Count();
         }
+        public int WatchCountByBrand(string brand)
+        {
+            ICollection<Watch> watches = this.GetWatchesByBrand(brand);
+            return watches.Count();
+        }
+        public int WatchCountByMaterial(string material)
+        {
+            ICollection<Watch> watches = this.GetWatchesByMaterial(material);
+            return watches.Count();
+        }
         public Material GetMaterial(string type)
         {
             if (string.IsNullOrWhiteSpace(type))
@@ -80,14 +90,45 @@
             ICollection<Watch> watches = this.context.Watches.Where(x => x.Brand.Name == brand).ToArray();
             if (!watches.Any())
             {
-                throw new ArgumentException("Not an existing brand!");
+                throw new ArgumentException("Not an available brand!");
                 
+            }
+            return watches;
+        }
+        public ICollection<Watch> GetWatchesByMaterial(string type)
+        {
+            if (string.IsNullOrWhiteSpace(type))
+            {
+                throw new ArgumentException("Invalid type!");
+
+            }
+            ICollection<Watch> watches = this.context.Watches.Where(x => x.Material.Type == type).ToArray();
+            if (!watches.Any())
+            {
+                throw new ArgumentException("Not existing type!");
+
             }
             return watches;
         }
         public ICollection<Watch> GetWatches(int page = 1, int itemsPerPage = 3)
         {
             return this.context.Watches
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage)
+                .ToList();
+        }
+        public ICollection<Watch> GetWatchesByBrand(string brand,int page = 1, int itemsPerPage = 2)
+        {
+            return this.context.Watches
+                .Where(x => x.Brand.Name == brand)
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage)
+                .ToList();
+        }
+        public ICollection<Watch> GetWatchesByMaterial(string material, int page = 1, int itemsPerPage = 2)
+        {
+            return this.context.Watches
+                .Where(x => x.Material.Type == material)
                 .Skip((page - 1) * itemsPerPage)
                 .Take(itemsPerPage)
                 .ToList();
@@ -242,7 +283,14 @@
                     break;
                 }
             }
-            return id;
+            if (id >= a.Count())
+            {
+                throw new ArgumentException("Invalid category!");
+            }
+            else
+            {
+                return id;
+            }
         }
         public int GetMaterialIdbyType(string type)
         {
@@ -259,7 +307,14 @@
                     break;
                 }
             }
-            return id;
+            if (id >= a.Count())
+            {
+                throw new ArgumentException("Invalid material!");
+            }
+            else
+            {
+                return id;
+            }
         }
         public int GettBrandIdbyName(string name)
         {
@@ -278,7 +333,14 @@
                 }
                 
             }
-            return id;
+            if (id >= a.Count())
+            {
+                throw new ArgumentException("Invalid brand!");
+            }
+            else
+            {
+                return id;
+            }
         }
         public void UpdateWatchPrice(string watchrefnum, string price)
         {

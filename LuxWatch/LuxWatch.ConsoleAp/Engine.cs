@@ -62,6 +62,9 @@
                         case "DM":
                             DeleteMaterial();
                             break;
+                        case "GWBM":
+                            GetWatchesByMateral();
+                            break;
                         case "Q":
                             Environment.Exit(0);
                             break;
@@ -72,6 +75,18 @@
                 {
                     Console.WriteLine(ex.Message);
                 }
+            }
+
+        }
+        public void GetWatchesByMateral()
+        {
+            Console.WriteLine("Input Material: ");
+            string type = Console.ReadLine();
+
+            foreach (var w in services.GetWatchesByMaterial(type))
+            {
+                Console.WriteLine();
+                services.PrintWatch(w);
             }
 
         }

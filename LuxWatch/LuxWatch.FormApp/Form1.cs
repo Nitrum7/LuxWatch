@@ -1,4 +1,5 @@
 ﻿using LuxWatch.Service;
+using Scooters.FormApp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -57,18 +58,31 @@ namespace LuxWatch.FormApp
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            if (radioButtonBrand.Checked)
+            try
             {
-                string brand = comboBoxBrand.GetItemText(comboBoxBrand.SelectedIndex);
-
+                if (radioButtonBrand.Checked)
+                {
+                    string brand = comboBoxBrand.Text;
+                    SearchResultForm searchResultForm = new SearchResultForm(services, brand,1);
+                    searchResultForm.Show();
+                }
+                else if (radioButtonRefNum.Checked)
+                {
+                    string refNum = textBoxRN.Text;
+                    SearchResultForm searchResultForm = new SearchResultForm(services, refNum,2);
+                    searchResultForm.Show();
+                }
+                else if (radioButtonMaterial.Checked)
+                {
+                    string material = comboBoxMaterial.Text;
+                    SearchResultForm searchResultForm = new SearchResultForm(services, material, 3);
+                    searchResultForm.Show();
+                }
             }
-            else if (radioButtonRefNum.Checked)
+            catch (Exception)
             {
 
-            }
-            else if (radioButtonMaterial.Checked)
-            {
-
+                throw;
             }
         }
 

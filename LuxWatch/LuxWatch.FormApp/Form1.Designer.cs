@@ -36,12 +36,12 @@
             this.comboBoxBrand = new System.Windows.Forms.ComboBox();
             this.groupBoxSearchRN = new System.Windows.Forms.GroupBox();
             this.labelRefN = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxRN = new System.Windows.Forms.TextBox();
             this.radioButtonMaterial = new System.Windows.Forms.RadioButton();
             this.groupBoxMaterial = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxMaterial = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonShowAllWatches = new System.Windows.Forms.Button();
             this.groupBoxSearchB.SuspendLayout();
             this.groupBoxSearchRN.SuspendLayout();
             this.groupBoxMaterial.SuspendLayout();
@@ -115,7 +115,7 @@
             // groupBoxSearchRN
             // 
             this.groupBoxSearchRN.Controls.Add(this.labelRefN);
-            this.groupBoxSearchRN.Controls.Add(this.textBox1);
+            this.groupBoxSearchRN.Controls.Add(this.textBoxRN);
             this.groupBoxSearchRN.Location = new System.Drawing.Point(32, 166);
             this.groupBoxSearchRN.Name = "groupBoxSearchRN";
             this.groupBoxSearchRN.Size = new System.Drawing.Size(424, 90);
@@ -132,12 +132,12 @@
             this.labelRefN.TabIndex = 1;
             this.labelRefN.Text = "Ref. Number:";
             // 
-            // textBox1
+            // textBoxRN
             // 
-            this.textBox1.Location = new System.Drawing.Point(99, 43);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(297, 23);
-            this.textBox1.TabIndex = 0;
+            this.textBoxRN.Location = new System.Drawing.Point(99, 43);
+            this.textBoxRN.Name = "textBoxRN";
+            this.textBoxRN.Size = new System.Drawing.Size(297, 23);
+            this.textBoxRN.TabIndex = 0;
             // 
             // radioButtonMaterial
             // 
@@ -180,23 +180,23 @@
             this.comboBoxMaterial.Size = new System.Drawing.Size(324, 23);
             this.comboBoxMaterial.TabIndex = 0;
             // 
-            // button1
+            // buttonShowAllWatches
             // 
-            this.button1.Font = new System.Drawing.Font("Bahnschrift", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(12, 403);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(444, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Show All Watches";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonShowAllWatches.Font = new System.Drawing.Font("Bahnschrift", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonShowAllWatches.Location = new System.Drawing.Point(12, 403);
+            this.buttonShowAllWatches.Name = "buttonShowAllWatches";
+            this.buttonShowAllWatches.Size = new System.Drawing.Size(444, 23);
+            this.buttonShowAllWatches.TabIndex = 8;
+            this.buttonShowAllWatches.Text = "Show All Watches";
+            this.buttonShowAllWatches.UseVisualStyleBackColor = true;
+            this.buttonShowAllWatches.Click += new System.EventHandler(this.button1_Click);
             // 
             // Catalogue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(468, 473);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonShowAllWatches);
             this.Controls.Add(this.groupBoxMaterial);
             this.Controls.Add(this.radioButtonMaterial);
             this.Controls.Add(this.groupBoxSearchRN);
@@ -228,11 +228,11 @@
         private System.Windows.Forms.ComboBox comboBoxBrand;
         private System.Windows.Forms.GroupBox groupBoxSearchRN;
         private System.Windows.Forms.Label labelRefN;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxRN;
         private System.Windows.Forms.RadioButton radioButtonMaterial;
         private System.Windows.Forms.GroupBox groupBoxMaterial;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxMaterial;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonShowAllWatches;
     }
 }
