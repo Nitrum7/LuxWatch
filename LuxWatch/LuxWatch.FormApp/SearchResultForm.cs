@@ -31,6 +31,8 @@ namespace LuxWatch.FormApp
         {
             try
             {
+                this.richTextBox1.Enabled = false;
+
                 string result = string.Empty;
                 if (method==1)
                 {
@@ -62,7 +64,7 @@ namespace LuxWatch.FormApp
                 }
                 
                 this.richTextBox1.Text = result;
-                this.richTextBox1.Enabled = false;
+                
             }
             catch (Exception ex)
             {

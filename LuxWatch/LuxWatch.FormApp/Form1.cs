@@ -58,13 +58,20 @@ namespace LuxWatch.FormApp
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
+            // Трябва да се дебъгне проблем, при който формата с резултати винаги се отваря****
             try
             {
                 if (radioButtonBrand.Checked)
                 {
                     string brand = comboBoxBrand.Text;
-                    SearchResultForm searchResultForm = new SearchResultForm(services, brand,1);
-                    searchResultForm.Show();
+                    string[] allBrands = this.services.GetBrandsName();
+                    SearchResultForm searchResultForm = new SearchResultForm(services, brand, 1);
+                    if (allBrands.Contains(brand))
+                    {
+                        searchResultForm.Show();
+                    }
+                    else
+                        searchResultForm.Hide();
                 }
                 else if (radioButtonRefNum.Checked)
                 {
@@ -79,10 +86,9 @@ namespace LuxWatch.FormApp
                     searchResultForm.Show();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                MessageBox.Show(ex.Message);
             }
         }
 
