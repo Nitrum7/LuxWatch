@@ -1,12 +1,10 @@
-﻿using System;
-
-namespace LuxWatch.DataProcessor
+﻿namespace LuxWatch.DataProcessor
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            DataSeeder dataSeeder = new DataSeeder();
         }
     }
 }

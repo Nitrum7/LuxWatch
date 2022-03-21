@@ -256,7 +256,6 @@
                 throw new ArgumentException("Invalid Price!");
             }
 
-
             Watch watch = new Watch()
             {
                 RefNum = refNum,
@@ -434,6 +433,111 @@
         public void PrintWatch(Watch watch)
         {
             Console.WriteLine($"Reference Number: {watch.RefNum}\nBrand: {watch.Brand.Name}\nModel: {watch.Model}\nSize: {watch.Size}\nMaterial: {watch.Material.Type}\nCategory: {watch.Category.Sex}\nYear: {watch.Year}\nPrice: {watch.Price}");
+        }
+
+        public void AddBrands(List<Brand> brands)
+        {
+            foreach (var name in brands)
+            {
+                int count = 1;
+                if (string.IsNullOrWhiteSpace(name.Name))
+                {
+                    throw new ArgumentException("Invalid Brand!");
+                }
+                var a = this.context.Brands.Where(x => x.Name != null).ToList();
+                foreach (var brand1 in a)
+                {
+                    if (name.Name != brand1.Name)
+                    {
+                        count++;
+
+                    }
+                }
+                if (count == a.Count)
+                {
+                    throw new ArgumentException("Brand already exists!");
+
+                }
+                else
+                {
+                    Brand brand = new Brand()
+                    {
+
+                        Name = name.Name
+                    };
+                    context.Brands.Add(brand);
+                    context.SaveChanges();
+                }
+            
+            }
+        }
+
+        public void AddMaterials(List<Material> materials)
+        {
+            foreach (var type in materials)
+            {
+                int count = 1;
+                if (string.IsNullOrWhiteSpace(type.Type))
+                {
+                    throw new ArgumentException("Invalid material!");
+                }
+                var a = this.context.Materials.Where(x => x.Type != null).ToList();
+                foreach (var material in a)
+                {
+                    if (type.Type != material.Type)
+                    {
+                        count++;
+                    }
+                }
+                if (count == a.Count)
+                {
+                    throw new ArgumentException("Material already exists!");
+                }
+                else
+                {
+                    Material materia = new Material()
+                    {
+                        Type = type.Type
+                    };
+                    context.Materials.Add(materia);
+                    context.SaveChanges();
+                }
+            }
+            
+        }
+
+        public void AddCategories(List<Category> categories)
+        {
+            foreach (var sex in categories)
+            {
+                int count = 1;
+                if (string.IsNullOrWhiteSpace(sex.Sex))
+                {
+                    throw new ArgumentException("Invalid category!");
+                }
+                var a = this.context.Categories.Where(x => x.Sex != null).ToList();
+                foreach (var category1 in a)
+                {
+                    if (sex.Sex != category1.Sex)
+                    {
+                        count++;
+                    }
+                }
+                if (count == a.Count)
+                {
+                    throw new ArgumentException("Category already exists!");
+                }
+                else
+                {
+                    Category category = new Category()
+                    {
+                        Sex = sex.Sex
+                    };
+                    context.Categories.Add(category);
+                    context.SaveChanges();
+                }
+            }
+
         }
 
     }
