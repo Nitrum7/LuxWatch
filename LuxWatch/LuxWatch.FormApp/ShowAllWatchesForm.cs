@@ -27,12 +27,32 @@ namespace LuxWatch.FormApp
 
         private void ShowAllWatchesForm_Load(object sender, EventArgs e)
         {
+            LoadData();
+        }
+
+        private void LoadData()
+        {
             string result = string.Empty;
-            
-            Watch[] watches = this.services.GetAllWatches(); 
+
+            Watch[] watches = this.services.GetAllWatches();
+            if (!watches.Any())
+            {
+                buttonPrev.Enabled = false;
+                buttonNext.Enabled = false;
+            }
+            if (watches.Count()<=3)
+            {
+                buttonPrev.Enabled = false;
+                buttonNext.Enabled = false;
+            }
+            else if (watches.Count()>3)
+            {
+                buttonPrev.Enabled = true;
+                buttonNext.Enabled = true;
+            }
             foreach (var item in watches)
             {
-               result +=  this.services.PrintWatchForm(item);
+                result += this.services.PrintWatchForm(item);
             }
             this.richTextBox1.Text = result;
             this.richTextBox1.Enabled = false;
@@ -96,6 +116,7 @@ namespace LuxWatch.FormApp
                 {
                     MessageBox.Show("You closed the dialog!");
                 }
+                LoadData();
             }
             catch (Exception ex)
             {
@@ -105,63 +126,22 @@ namespace LuxWatch.FormApp
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            string[] res = new string[8];
             try
             {
-                DialogForm dialogFormRN = new DialogForm("Enter ref. number ");
-                if (dialogFormRN.ShowDialog() == DialogResult.OK)
-                {
-                    res[0] = dialogFormRN.Result;
-                    dialogFormRN.Close();
-                    DialogForm dialogFormB = new DialogForm("Enter brand ");
-                    if (dialogFormB.ShowDialog() == DialogResult.OK)
-                    {
-                        res[1] = dialogFormB.Result;
-                        dialogFormB.Close();
-                        DialogForm dialogFormM = new DialogForm("Enter model ");
-                        if (dialogFormM.ShowDialog() == DialogResult.OK)
-                        {
-                            res[2] = dialogFormM.Result;
-                            dialogFormM.Close();
-                            DialogForm dialogFormMat = new DialogForm("Enter material ");
-                            if (dialogFormMat.ShowDialog() == DialogResult.OK)
-                            {
-                                res[3] = dialogFormMat.Result;
-                                dialogFormM.Close();
-                                DialogForm dialogFormC = new DialogForm("Enter category ");
-                                if (dialogFormC.ShowDialog() == DialogResult.OK)
-                                {
-                                    res[4] = dialogFormC.Result;
-                                    dialogFormC.Close();
-                                    DialogForm dialogFormS = new DialogForm("Enter size ");
-                                    if (dialogFormS.ShowDialog() == DialogResult.OK)
-                                    {
-                                        res[5] = dialogFormS.Result;
-                                        dialogFormS.Close();
-                                        DialogForm dialogFormY = new DialogForm("Enter year ");
-                                        if (dialogFormY.ShowDialog() == DialogResult.OK)
-                                        {
-                                            res[6] = dialogFormY.Result;
-                                            dialogFormY.Close();
-                                            DialogForm dialogFormP = new DialogForm("Enter price ");
-                                            if (dialogFormP.ShowDialog() == DialogResult.OK)
-                                            {
-                                                res[7] = dialogFormP.Result;
-                                                this.services.AddWatch(res[0], res[1], res[2], res[3], res[4], res[5], res[6], res[7]);
-                                                MessageBox.Show("Watch successfully added");
-                                                dialogFormP.Close();
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("You closed the dialog!");
-                }
+                AddWatchForm addWatchForm = new AddWatchForm(services);
+                addWatchForm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonRefresh_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LoadData();
             }
             catch (Exception ex)
             {

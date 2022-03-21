@@ -1,4 +1,5 @@
-﻿using LuxWatch.Service;
+﻿using LuxWatch.Model;
+using LuxWatch.Service;
 using Scooters.FormApp;
 using System;
 using System.Collections.Generic;
@@ -22,20 +23,20 @@ namespace LuxWatch.FormApp
         }
 
         private void Catalogue_Load(object sender, EventArgs e)
-        { 
+        {
             this.groupBoxSearchB.Hide();
             this.groupBoxSearchRN.Hide();
             this.groupBoxMaterial.Hide();
             this.SearchButton.Enabled = false;
         }
-  
+
         private void radioButtonBrand_CheckedChanged(object sender, EventArgs e)
         {
             this.groupBoxSearchRN.Hide();
             this.groupBoxMaterial.Hide();
             this.groupBoxSearchB.Show();
             comboBoxBrand.Items.AddRange(services.GetBrandsName());
-            this.SearchButton.Enabled=true;
+            this.SearchButton.Enabled = true;
         }
 
         private void radioButtonRefNum_CheckedChanged(object sender, EventArgs e)
@@ -58,15 +59,14 @@ namespace LuxWatch.FormApp
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            // Трябва да се дебъгне проблем, при който формата с резултати винаги се отваря****
             try
             {
                 if (radioButtonBrand.Checked)
                 {
                     string brand = comboBoxBrand.Text;
-                    string[] allBrands = this.services.GetBrandsName();
+                    Watch[] allBrands = this.services.GetWatchesByBrand(brand).ToArray();
                     SearchResultForm searchResultForm = new SearchResultForm(services, brand, 1);
-                    if (allBrands.Contains(brand))
+                    if (allBrands.Any())
                     {
                         searchResultForm.Show();
                     }
@@ -76,14 +76,26 @@ namespace LuxWatch.FormApp
                 else if (radioButtonRefNum.Checked)
                 {
                     string refNum = textBoxRN.Text;
-                    SearchResultForm searchResultForm = new SearchResultForm(services, refNum,2);
-                    searchResultForm.Show();
+                    Watch watchByRN = this.services.GetWatch(refNum);
+                    SearchResultForm searchResultForm = new SearchResultForm(services, refNum, 2);
+                    if (watchByRN != null)
+                    {
+                        searchResultForm.Show();
+                    }
+                    else
+                        searchResultForm.Hide();
                 }
                 else if (radioButtonMaterial.Checked)
                 {
                     string material = comboBoxMaterial.Text;
+                    Watch[] allMaterial = this.services.GetWatchesByMaterial(material).ToArray();
                     SearchResultForm searchResultForm = new SearchResultForm(services, material, 3);
-                    searchResultForm.Show();
+                    if (allMaterial.Any())
+                    {
+                        searchResultForm.Show();
+                    }
+                    else
+                        searchResultForm.Hide();
                 }
             }
             catch (Exception ex)
@@ -96,7 +108,7 @@ namespace LuxWatch.FormApp
         {
             ShowAllWatchesForm form = new ShowAllWatchesForm(services);
             form.Show();
-            
+
         }
     }
 }

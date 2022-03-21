@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LuxWatch.WebApp
+namespace LuxWatch.Web.App
 {
     public class Program
     {

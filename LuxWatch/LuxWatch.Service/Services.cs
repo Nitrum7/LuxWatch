@@ -75,6 +75,10 @@
         {
             return this.context.Materials.Select(x => x.Type).ToArray();
         }
+        public string[] GetCategorySex()
+        {
+            return this.context.Categories.Select(x => x.Sex).ToArray();
+        }
         public Watch[] GetAllWatches()
         {
             return this.context.Watches.OrderBy(x => x.Model).ToArray();
@@ -85,13 +89,13 @@
             if (string.IsNullOrWhiteSpace(brand))
             {
                 throw new ArgumentException("Invalid brand name!");
-                
+
             }
             ICollection<Watch> watches = this.context.Watches.Where(x => x.Brand.Name == brand).ToArray();
             if (!watches.Any())
             {
                 throw new ArgumentException("Not an available brand!");
-                
+
             }
             return watches;
         }
@@ -117,7 +121,7 @@
                 .Take(itemsPerPage)
                 .ToList();
         }
-        public ICollection<Watch> GetWatchesByBrand(string brand,int page = 1, int itemsPerPage = 2)
+        public ICollection<Watch> GetWatchesByBrand(string brand, int page = 1, int itemsPerPage = 2)
         {
             return this.context.Watches
                 .Where(x => x.Brand.Name == brand)
@@ -178,11 +182,11 @@
                 if (type != material.Type)
                 {
                     count++;
-                }              
+                }
             }
-            if (count==a.Count)
+            if (count == a.Count)
             {
-                throw new ArgumentException("Material already exists!");               
+                throw new ArgumentException("Material already exists!");
             }
             else
             {
@@ -192,7 +196,7 @@
                 };
                 context.Materials.Add(materia);
                 context.SaveChanges();
-            }                    
+            }
         }
 
         public void AddWatch(string refNum, string brand, string model, string material, string category, string size, string year, string price)
@@ -276,14 +280,14 @@
             {
                 if (sex != name.Sex)
                 {
-                    id++;                   
+                    id++;
                 }
                 else
                 {
                     break;
                 }
             }
-            if (id >= a.Count())
+            if (id > a.Count())
             {
                 throw new ArgumentException("Invalid category!");
             }
@@ -307,7 +311,7 @@
                     break;
                 }
             }
-            if (id >= a.Count())
+            if (id > a.Count())
             {
                 throw new ArgumentException("Invalid material!");
             }
@@ -331,9 +335,9 @@
                 {
                     break;
                 }
-                
+
             }
-            if (id >= a.Count())
+            if (id > a.Count())
             {
                 throw new ArgumentException("Invalid brand!");
             }
@@ -425,7 +429,7 @@
 
         public string PrintWatchForm(Watch watch)
         {
-            return ($"Reference Number: {watch.RefNum}\nBrand: {watch.Brand.Name}\nModel: {watch.Model}\nSize: {watch.Size}\nMaterial: {watch.Material.Type}\nCategory: {watch.Category.Sex}\nYear: {watch.Year}\nPrice: {watch.Price}\n{new string('-',50)}\n");
+            return ($"Reference Number: {watch.RefNum}\nBrand: {watch.Brand.Name}\nModel: {watch.Model}\nSize: {watch.Size}\nMaterial: {watch.Material.Type}\nCategory: {watch.Category.Sex}\nYear: {watch.Year}\nPrice: {watch.Price}\n{new string('-', 50)}\n");
         }
         public void PrintWatch(Watch watch)
         {

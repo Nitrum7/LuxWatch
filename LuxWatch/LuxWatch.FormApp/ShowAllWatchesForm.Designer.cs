@@ -32,7 +32,8 @@
             this.buttonPrev = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.buttonNext = new System.Windows.Forms.Button();
+            this.buttonRefresh = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -76,23 +77,35 @@
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
-            // button4
+            // buttonNext
             // 
-            this.button4.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button4.Location = new System.Drawing.Point(351, 425);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 26);
-            this.button4.TabIndex = 4;
-            this.button4.Text = ">>>";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.buttonNext.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonNext.Location = new System.Drawing.Point(351, 425);
+            this.buttonNext.Name = "buttonNext";
+            this.buttonNext.Size = new System.Drawing.Size(75, 26);
+            this.buttonNext.TabIndex = 4;
+            this.buttonNext.Text = ">>>";
+            this.buttonNext.UseVisualStyleBackColor = true;
+            this.buttonNext.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // buttonRefresh
+            // 
+            this.buttonRefresh.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonRefresh.Location = new System.Drawing.Point(168, 458);
+            this.buttonRefresh.Name = "buttonRefresh";
+            this.buttonRefresh.Size = new System.Drawing.Size(99, 23);
+            this.buttonRefresh.TabIndex = 5;
+            this.buttonRefresh.Text = "Refresh";
+            this.buttonRefresh.UseVisualStyleBackColor = true;
+            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
             // 
             // ShowAllWatchesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(438, 467);
-            this.Controls.Add(this.button4);
+            this.ClientSize = new System.Drawing.Size(438, 486);
+            this.Controls.Add(this.buttonRefresh);
+            this.Controls.Add(this.buttonNext);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.buttonPrev);
@@ -110,6 +123,7 @@
         private System.Windows.Forms.Button buttonPrev;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonDelete;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button buttonNext;
+        private System.Windows.Forms.Button buttonRefresh;
     }
 }

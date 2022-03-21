@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuxWatch.Model", "LuxWatch.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuxWatch.ConsoleAp", "LuxWatch.ConsoleAp\LuxWatch.ConsoleAp.csproj", "{A7C55B1C-09DE-4CD4-8CC8-1F1AD337E226}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuxWatch.FormApp", "LuxWatch.FormApp\LuxWatch.FormApp.csproj", "{3B941095-59D9-4316-9183-733498220569}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuxWatch.DataProcessor", "LuxWatch.DataProcessor\LuxWatch.DataProcessor.csproj", "{2A64CAA2-34AA-4652-93C1-1F8E65C27FB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuxWatch.WebApp", "LuxWatch.WebApp\LuxWatch.WebApp.csproj", "{2B10E704-69CE-4114-8A83-AAC036659052}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuxWatch.Web.App", "LuxWatch.Web.App\LuxWatch.Web.App.csproj", "{3977CE19-8F5E-497E-A83B-1B9276E91CB0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuxWatch.FormApp", "LuxWatch.FormApp\LuxWatch.FormApp.csproj", "{5987718A-5051-42A5-8998-4DA67BE3B749}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,14 +39,18 @@ Global
 		{A7C55B1C-09DE-4CD4-8CC8-1F1AD337E226}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7C55B1C-09DE-4CD4-8CC8-1F1AD337E226}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7C55B1C-09DE-4CD4-8CC8-1F1AD337E226}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3B941095-59D9-4316-9183-733498220569}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3B941095-59D9-4316-9183-733498220569}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3B941095-59D9-4316-9183-733498220569}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3B941095-59D9-4316-9183-733498220569}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2B10E704-69CE-4114-8A83-AAC036659052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2B10E704-69CE-4114-8A83-AAC036659052}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2B10E704-69CE-4114-8A83-AAC036659052}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2B10E704-69CE-4114-8A83-AAC036659052}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A64CAA2-34AA-4652-93C1-1F8E65C27FB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A64CAA2-34AA-4652-93C1-1F8E65C27FB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A64CAA2-34AA-4652-93C1-1F8E65C27FB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A64CAA2-34AA-4652-93C1-1F8E65C27FB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3977CE19-8F5E-497E-A83B-1B9276E91CB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3977CE19-8F5E-497E-A83B-1B9276E91CB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3977CE19-8F5E-497E-A83B-1B9276E91CB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3977CE19-8F5E-497E-A83B-1B9276E91CB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5987718A-5051-42A5-8998-4DA67BE3B749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5987718A-5051-42A5-8998-4DA67BE3B749}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5987718A-5051-42A5-8998-4DA67BE3B749}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5987718A-5051-42A5-8998-4DA67BE3B749}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

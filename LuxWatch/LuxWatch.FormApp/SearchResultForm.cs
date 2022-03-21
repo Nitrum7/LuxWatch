@@ -38,6 +38,11 @@ namespace LuxWatch.FormApp
                 {
                     result=String.Empty;
                     ICollection<Watch> watches = this.services.GetWatchesByBrand(input).ToArray();
+                    if (watches.Count<=2)
+                    {
+                        buttonNext.Enabled = false;
+                        buttonPrev.Enabled = false;
+                    }
                     foreach (var item in watches)
                     {
                         result += this.services.PrintWatchForm(item);
@@ -57,6 +62,11 @@ namespace LuxWatch.FormApp
                 {
                     result = String.Empty;
                     ICollection<Watch> watches = this.services.GetWatchesByMaterial(input).ToArray();
+                    if (watches.Count <= 2)
+                    {
+                        buttonNext.Enabled = false;
+                        buttonPrev.Enabled = false;
+                    }
                     foreach (var item in watches)
                     {
                         result += this.services.PrintWatchForm(item);
