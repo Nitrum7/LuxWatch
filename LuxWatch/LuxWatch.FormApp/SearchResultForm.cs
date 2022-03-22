@@ -29,108 +29,17 @@ namespace LuxWatch.FormApp
 
         private void SearchResultForm_Load(object sender, EventArgs e)
         {
-            try
-            {
-                this.richTextBox1.Enabled = false;
-
-                string result = string.Empty;
-                if (method==1)
-                {
-                    result=String.Empty;
-                    ICollection<Watch> watches = this.services.GetWatchesByBrand(input).ToArray();
-                    if (watches.Count<=2)
-                    {
-                        buttonNext.Enabled = false;
-                        buttonPrev.Enabled = false;
-                    }
-                    foreach (var item in watches)
-                    {
-                        result += this.services.PrintWatchForm(item);
-                    }
-                }
-                else if (method==2)
-                {
-                    buttonNext.Enabled = false;
-                    buttonPrev.Enabled = false;
-                    buttonNext.Hide();
-                    buttonPrev.Hide();
-                    result = String.Empty;
-                    Watch watch = this.services.GetWatch(input);
-                    result+=this.services.PrintWatchForm(watch);
-                }
-                else if (method==3)
-                {
-                    result = String.Empty;
-                    ICollection<Watch> watches = this.services.GetWatchesByMaterial(input).ToArray();
-                    if (watches.Count <= 2)
-                    {
-                        buttonNext.Enabled = false;
-                        buttonPrev.Enabled = false;
-                    }
-                    foreach (var item in watches)
-                    {
-                        result += this.services.PrintWatchForm(item);
-                    }
-                }
-                
-                this.richTextBox1.Text = result;
-                
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
+            FormStartupSetter();
         }
-
         private void buttonPrev_Click(object sender, EventArgs e)
         {
-            if (method==1)
-            {
-                int watchC = this.services.WatchCountByBrand(input);
-                totalPage = (int)Math.Ceiling((double)watchC / 2);
-                if ((currentPage - 1) < 1 || currentPage > totalPage)
-                {
-                    currentPage = totalPage;
-                }
-                else
-                {
-                    currentPage--;
-                }
-                ICollection<Watch> watches = this.services.GetWatchesByBrand(input, currentPage);
-                string result = string.Empty;
-
-                foreach (var item in watches)
-                {
-                    result += this.services.PrintWatchForm(item);
-                }
-                richTextBox1.Text = result;
-            }
-            else if (method==3)
-            {
-                int watchC = this.services.WatchCountByMaterial(input);
-                totalPage = (int)Math.Ceiling((double)watchC / 2);
-                if ((currentPage - 1) < 1 || currentPage > totalPage)
-                {
-                    currentPage = totalPage;
-                }
-                else
-                {
-                    currentPage--;
-                }
-                ICollection<Watch> watches = this.services.GetWatchesByMaterial(input, currentPage);
-                string result = string.Empty;
-
-                foreach (var item in watches)
-                {
-                    result += this.services.PrintWatchForm(item);
-                }
-                richTextBox1.Text = result;
-            }
-            
+            PageDown();
         }
-
         private void buttonNext_Click(object sender, EventArgs e)
+        {
+            PageUp();
+        }
+        private void PageUp()
         {
             if (method == 1)
             {
@@ -164,6 +73,106 @@ namespace LuxWatch.FormApp
                 else
                 {
                     currentPage++;
+                }
+                ICollection<Watch> watches = this.services.GetWatchesByMaterial(input, currentPage);
+                string result = string.Empty;
+
+                foreach (var item in watches)
+                {
+                    result += this.services.PrintWatchForm(item);
+                }
+                richTextBox1.Text = result;
+            }
+        }
+        private void FormStartupSetter()
+        {
+            try
+            {
+                this.richTextBox1.Enabled = false;
+
+                string result = string.Empty;
+                if (method == 1)
+                {
+                    result = String.Empty;
+                    ICollection<Watch> watches = this.services.GetWatchesByBrand(input).ToArray();
+                    if (watches.Count <= 2)
+                    {
+                        buttonNext.Enabled = false;
+                        buttonPrev.Enabled = false;
+                    }
+                    foreach (var item in watches)
+                    {
+                        result += this.services.PrintWatchForm(item);
+                    }
+                }
+                else if (method == 2)
+                {
+                    buttonNext.Enabled = false;
+                    buttonPrev.Enabled = false;
+                    buttonNext.Hide();
+                    buttonPrev.Hide();
+                    result = String.Empty;
+                    Watch watch = this.services.GetWatch(input);
+                    result += this.services.PrintWatchForm(watch);
+                }
+                else if (method == 3)
+                {
+                    result = String.Empty;
+                    ICollection<Watch> watches = this.services.GetWatchesByMaterial(input).ToArray();
+                    if (watches.Count <= 2)
+                    {
+                        buttonNext.Enabled = false;
+                        buttonPrev.Enabled = false;
+                    }
+                    foreach (var item in watches)
+                    {
+                        result += this.services.PrintWatchForm(item);
+                    }
+                }
+
+                this.richTextBox1.Text = result;
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void PageDown()
+        {
+            if (method == 1)
+            {
+                int watchC = this.services.WatchCountByBrand(input);
+                totalPage = (int)Math.Ceiling((double)watchC / 2);
+                if ((currentPage - 1) < 1 || currentPage > totalPage)
+                {
+                    currentPage = totalPage;
+                }
+                else
+                {
+                    currentPage--;
+                }
+                ICollection<Watch> watches = this.services.GetWatchesByBrand(input, currentPage);
+                string result = string.Empty;
+
+                foreach (var item in watches)
+                {
+                    result += this.services.PrintWatchForm(item);
+                }
+                richTextBox1.Text = result;
+            }
+            else if (method == 3)
+            {
+                int watchC = this.services.WatchCountByMaterial(input);
+                totalPage = (int)Math.Ceiling((double)watchC / 2);
+                if ((currentPage - 1) < 1 || currentPage > totalPage)
+                {
+                    currentPage = totalPage;
+                }
+                else
+                {
+                    currentPage--;
                 }
                 ICollection<Watch> watches = this.services.GetWatchesByMaterial(input, currentPage);
                 string result = string.Empty;

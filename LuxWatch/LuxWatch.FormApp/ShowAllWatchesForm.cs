@@ -18,7 +18,7 @@ namespace LuxWatch.FormApp
         private int currentPage = 1;
         private int totalPage = 0;
         private readonly Services services;
-        
+
         public ShowAllWatchesForm(Services services)
         {
             InitializeComponent();
@@ -29,79 +29,14 @@ namespace LuxWatch.FormApp
         {
             LoadData();
         }
-
-        private void LoadData()
-        {
-            string result = string.Empty;
-
-            Watch[] watches = this.services.GetAllWatches();
-            if (!watches.Any())
-            {
-                buttonPrev.Enabled = false;
-                buttonNext.Enabled = false;
-            }
-            if (watches.Count()<=3)
-            {
-                buttonPrev.Enabled = false;
-                buttonNext.Enabled = false;
-            }
-            else if (watches.Count()>3)
-            {
-                buttonPrev.Enabled = true;
-                buttonNext.Enabled = true;
-            }
-            foreach (var item in watches)
-            {
-                result += this.services.PrintWatchForm(item);
-            }
-            this.richTextBox1.Text = result;
-            this.richTextBox1.Enabled = false;
-        }
-
         private void buttonPrev_Click(object sender, EventArgs e)
         {
-            int watchC = this.services.WatchCount();
-            totalPage = (int)Math.Ceiling((double)watchC / 3);
-            if ((currentPage - 1) < 1 || currentPage > totalPage)
-            {
-                currentPage = totalPage;
-            }
-            else
-            {
-                currentPage--;
-            }
-            ICollection<Watch> watches = this.services.GetWatches(currentPage);
-            string result = string.Empty;
-
-            foreach (var item in watches)
-            {
-                result += this.services.PrintWatchForm(item);
-            }
-            richTextBox1.Text = result;
+            PageDown();
         }
-
-        private void button4_Click(object sender, EventArgs e)
+        private void buttonNext_Click(object sender, EventArgs e)
         {
-            int watchC = this.services.WatchCount();
-            totalPage = (int)Math.Ceiling((double)watchC / 3);
-            if ((currentPage + 1) > totalPage || currentPage > totalPage)
-            {
-                currentPage = 1;
-            }
-            else
-            {
-                currentPage++;
-            }
-            ICollection<Watch> watches = this.services.GetWatches(currentPage);
-            string result = string.Empty;
-
-            foreach (var item in watches)
-            {
-                result += this.services.PrintWatchForm(item);
-            }
-            richTextBox1.Text = result;
+            PageUp();
         }
-
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             try
@@ -136,7 +71,14 @@ namespace LuxWatch.FormApp
                 MessageBox.Show(ex.Message);
             }
         }
-
+        private void buttonUP_Click(object sender, EventArgs e)
+        {
+            UpdatePrice();
+        }
+        private void buttonUS_Click(object sender, EventArgs e)
+        {
+            UpdateSize();
+        }
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
             try
@@ -148,5 +90,130 @@ namespace LuxWatch.FormApp
                 MessageBox.Show(ex.Message);
             }
         }
+        private void UpdateSize()
+        {
+            try
+            {
+                DialogForm dialogRefNum = new DialogForm("Ref. Num ");
+                if (dialogRefNum.ShowDialog() == DialogResult.OK)
+                {
+                    string refNum = dialogRefNum.Result;
+                    dialogRefNum.Close();
+                    DialogForm dialogSize = new DialogForm("New Size: ");
+                    if (dialogSize.ShowDialog() == DialogResult.OK)
+                    {
+                        string size = dialogSize.Result;
+                        this.services.UpdateWatchSize(refNum, size);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("You closed the dialog!");
+                }
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void LoadData()
+        {
+            string result = string.Empty;
+
+            Watch[] watches = this.services.GetAllWatches();
+            if (!watches.Any())
+            {
+                buttonPrev.Enabled = false;
+                buttonNext.Enabled = false;
+            }
+            if (watches.Count() <= 3)
+            {
+                buttonPrev.Enabled = false;
+                buttonNext.Enabled = false;
+            }
+            else if (watches.Count() > 3)
+            {
+                buttonPrev.Enabled = true;
+                buttonNext.Enabled = true;
+            }
+            foreach (var item in watches)
+            {
+                result += this.services.PrintWatchForm(item);
+            }
+            this.richTextBox1.Text = result;
+            this.richTextBox1.Enabled = false;
+        }
+        private void PageUp()
+        {
+            int watchC = this.services.WatchCount();
+            totalPage = (int)Math.Ceiling((double)watchC / 3);
+            if ((currentPage + 1) > totalPage || currentPage > totalPage)
+            {
+                currentPage = 1;
+            }
+            else
+            {
+                currentPage++;
+            }
+            ICollection<Watch> watches = this.services.GetWatches(currentPage);
+            string result = string.Empty;
+
+            foreach (var item in watches)
+            {
+                result += this.services.PrintWatchForm(item);
+            }
+            richTextBox1.Text = result;
+        }
+        private void PageDown()
+        {
+            int watchC = this.services.WatchCount();
+            totalPage = (int)Math.Ceiling((double)watchC / 3);
+            if ((currentPage - 1) < 1 || currentPage > totalPage)
+            {
+                currentPage = totalPage;
+            }
+            else
+            {
+                currentPage--;
+            }
+            ICollection<Watch> watches = this.services.GetWatches(currentPage);
+            string result = string.Empty;
+
+            foreach (var item in watches)
+            {
+                result += this.services.PrintWatchForm(item);
+            }
+            richTextBox1.Text = result;
+        }
+        private void UpdatePrice()
+        {
+            try
+            {
+                DialogForm dialogRefNum = new DialogForm("Ref. Num ");
+                if (dialogRefNum.ShowDialog() == DialogResult.OK)
+                {
+                    string refNum = dialogRefNum.Result;
+                    dialogRefNum.Close();
+                    DialogForm dialogPrice = new DialogForm("New Price: ");
+                    if (dialogPrice.ShowDialog()==DialogResult.OK)
+                    {
+                        string price = dialogPrice.Result;
+                        this.services.UpdateWatchPrice(refNum, price);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("You closed the dialog!");
+                }
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        
     }
 }

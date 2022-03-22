@@ -39,8 +39,10 @@ namespace LuxWatch.FormApp
                 MessageBox.Show(ex.Message);
             }
         }
-        
-
+        private void buttonRB_Click(object sender, EventArgs e)
+        {
+            DeleteBrand();
+        }
         private void buttonAB_Click(object sender, EventArgs e)
         {
             try
@@ -62,7 +64,6 @@ namespace LuxWatch.FormApp
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void buttonAM_Click(object sender, EventArgs e)
         {
             try
@@ -83,6 +84,10 @@ namespace LuxWatch.FormApp
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+        private void buttonRM_Click(object sender, EventArgs e)
+        {
+            DeleteMaterial();
         }
         private void LoadBrands()
         {
@@ -109,6 +114,48 @@ namespace LuxWatch.FormApp
             string year = textBoxYear.Text;
             string price = textBoxPrice.Text;
             this.services.AddWatch(refNum, brand, model, material, category, size, year, price);
+        }
+        private void DeleteBrand()
+        {
+            try
+            {
+                DialogForm dialogForm = new DialogForm("Enter a brand: ");
+                if (dialogForm.ShowDialog() == DialogResult.OK)
+                {
+                    this.services.DeleteBrand(dialogForm.Result);
+                    MessageBox.Show("Brand deleted successfully");
+                }
+                else
+                {
+                    MessageBox.Show("You closed the dialog!");
+                }
+                LoadBrands();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void DeleteMaterial()
+        {
+            try
+            {
+                DialogForm dialogForm = new DialogForm("Enter a material: ");
+                if (dialogForm.ShowDialog() == DialogResult.OK)
+                {
+                    this.services.DeleteMaterial(dialogForm.Result);
+                    MessageBox.Show("Material deleted successfully");
+                }
+                else
+                {
+                    MessageBox.Show("You closed the dialog!");
+                }
+                LoadMaterials();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

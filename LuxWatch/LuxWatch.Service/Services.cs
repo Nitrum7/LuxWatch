@@ -354,7 +354,7 @@
             }
             if (!double.TryParse(price, out _))
             {
-                throw new ArgumentException("Invalid size price");
+                throw new ArgumentException("Invalid price");
             }
             Watch watch = GetWatch(watchrefnum);
             watch.Price = decimal.Parse(price);

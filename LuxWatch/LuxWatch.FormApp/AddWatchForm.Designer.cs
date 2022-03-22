@@ -50,6 +50,9 @@ namespace LuxWatch.FormApp
             this.groupBoxAP = new System.Windows.Forms.GroupBox();
             this.buttonAM = new System.Windows.Forms.Button();
             this.buttonAB = new System.Windows.Forms.Button();
+            this.buttonRB = new System.Windows.Forms.Button();
+            this.buttonRM = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBoxAP.SuspendLayout();
             this.SuspendLayout();
@@ -239,6 +242,9 @@ namespace LuxWatch.FormApp
             // 
             // groupBoxAP
             // 
+            this.groupBoxAP.Controls.Add(this.label1);
+            this.groupBoxAP.Controls.Add(this.buttonRM);
+            this.groupBoxAP.Controls.Add(this.buttonRB);
             this.groupBoxAP.Controls.Add(this.buttonAM);
             this.groupBoxAP.Controls.Add(this.buttonAB);
             this.groupBoxAP.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -251,9 +257,9 @@ namespace LuxWatch.FormApp
             // 
             // buttonAM
             // 
-            this.buttonAM.Location = new System.Drawing.Point(374, 21);
+            this.buttonAM.Location = new System.Drawing.Point(392, 21);
             this.buttonAM.Name = "buttonAM";
-            this.buttonAM.Size = new System.Drawing.Size(125, 23);
+            this.buttonAM.Size = new System.Drawing.Size(107, 23);
             this.buttonAM.TabIndex = 1;
             this.buttonAM.Text = "Add Material";
             this.buttonAM.UseVisualStyleBackColor = true;
@@ -263,11 +269,41 @@ namespace LuxWatch.FormApp
             // 
             this.buttonAB.Location = new System.Drawing.Point(6, 21);
             this.buttonAB.Name = "buttonAB";
-            this.buttonAB.Size = new System.Drawing.Size(125, 23);
+            this.buttonAB.Size = new System.Drawing.Size(107, 23);
             this.buttonAB.TabIndex = 0;
             this.buttonAB.Text = "Add Brand";
             this.buttonAB.UseVisualStyleBackColor = true;
             this.buttonAB.Click += new System.EventHandler(this.buttonAB_Click);
+            // 
+            // buttonRB
+            // 
+            this.buttonRB.Location = new System.Drawing.Point(119, 21);
+            this.buttonRB.Name = "buttonRB";
+            this.buttonRB.Size = new System.Drawing.Size(106, 23);
+            this.buttonRB.TabIndex = 2;
+            this.buttonRB.Text = "Remove Brand";
+            this.buttonRB.UseVisualStyleBackColor = true;
+            this.buttonRB.Click += new System.EventHandler(this.buttonRB_Click);
+            // 
+            // buttonRM
+            // 
+            this.buttonRM.Location = new System.Drawing.Point(280, 21);
+            this.buttonRM.Name = "buttonRM";
+            this.buttonRM.Size = new System.Drawing.Size(106, 23);
+            this.buttonRM.TabIndex = 3;
+            this.buttonRM.Text = "Remove Material";
+            this.buttonRM.UseVisualStyleBackColor = true;
+            this.buttonRM.Click += new System.EventHandler(this.buttonRM_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Bahnschrift", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(231, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 17);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "-----";
             // 
             // AddWatchForm
             // 
@@ -283,6 +319,7 @@ namespace LuxWatch.FormApp
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBoxAP.ResumeLayout(false);
+            this.groupBoxAP.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -310,5 +347,8 @@ namespace LuxWatch.FormApp
         private System.Windows.Forms.GroupBox groupBoxAP;
         private System.Windows.Forms.Button buttonAM;
         private System.Windows.Forms.Button buttonAB;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonRM;
+        private System.Windows.Forms.Button buttonRB;
     }
 }

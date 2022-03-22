@@ -24,12 +24,8 @@ namespace LuxWatch.FormApp
 
         private void Catalogue_Load(object sender, EventArgs e)
         {
-            this.groupBoxSearchB.Hide();
-            this.groupBoxSearchRN.Hide();
-            this.groupBoxMaterial.Hide();
-            this.SearchButton.Enabled = false;
+            FormStartupSetter();
         }
-
         private void radioButtonBrand_CheckedChanged(object sender, EventArgs e)
         {
             this.groupBoxSearchRN.Hide();
@@ -109,6 +105,13 @@ namespace LuxWatch.FormApp
             ShowAllWatchesForm form = new ShowAllWatchesForm(services);
             form.Show();
 
+        }
+        private void FormStartupSetter()
+        {
+            this.groupBoxSearchB.Hide();
+            this.groupBoxSearchRN.Hide();
+            this.groupBoxMaterial.Hide();
+            this.SearchButton.Enabled = false;
         }
     }
 }
