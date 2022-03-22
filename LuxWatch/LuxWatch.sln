@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuxWatch.DataProcessor", "L
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuxWatch.Web.App", "LuxWatch.Web.App\LuxWatch.Web.App.csproj", "{3977CE19-8F5E-497E-A83B-1B9276E91CB0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuxWatch.FormApp", "LuxWatch.FormApp\LuxWatch.FormApp.csproj", "{5987718A-5051-42A5-8998-4DA67BE3B749}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuxWatch.FormApp", "LuxWatch.FormApp\LuxWatch.FormApp.csproj", "{BC3D9489-F2FC-465C-B16B-8D2A49B3FDF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +47,10 @@ Global
 		{3977CE19-8F5E-497E-A83B-1B9276E91CB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3977CE19-8F5E-497E-A83B-1B9276E91CB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3977CE19-8F5E-497E-A83B-1B9276E91CB0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5987718A-5051-42A5-8998-4DA67BE3B749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5987718A-5051-42A5-8998-4DA67BE3B749}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5987718A-5051-42A5-8998-4DA67BE3B749}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5987718A-5051-42A5-8998-4DA67BE3B749}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC3D9489-F2FC-465C-B16B-8D2A49B3FDF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC3D9489-F2FC-465C-B16B-8D2A49B3FDF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC3D9489-F2FC-465C-B16B-8D2A49B3FDF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC3D9489-F2FC-465C-B16B-8D2A49B3FDF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
