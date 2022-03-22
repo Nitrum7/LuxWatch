@@ -47,11 +47,7 @@ namespace LuxWatch.FormApp
             this.textBoxRefNum = new System.Windows.Forms.TextBox();
             this.labelRefNum = new System.Windows.Forms.Label();
             this.buttonAdd = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.buttonAM = new System.Windows.Forms.Button();
-            this.buttonAB = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -238,44 +234,11 @@ namespace LuxWatch.FormApp
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.buttonAM);
-            this.groupBox2.Controls.Add(this.buttonAB);
-            this.groupBox2.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.Location = new System.Drawing.Point(12, 442);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(505, 45);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Additional options";
-            // 
-            // buttonAM
-            // 
-            this.buttonAM.Location = new System.Drawing.Point(301, 19);
-            this.buttonAM.Name = "buttonAM";
-            this.buttonAM.Size = new System.Drawing.Size(198, 20);
-            this.buttonAM.TabIndex = 1;
-            this.buttonAM.Text = "Add Material";
-            this.buttonAM.UseVisualStyleBackColor = true;
-            this.buttonAM.Click += new System.EventHandler(this.buttonAM_Click);
-            // 
-            // buttonAB
-            // 
-            this.buttonAB.Location = new System.Drawing.Point(6, 19);
-            this.buttonAB.Name = "buttonAB";
-            this.buttonAB.Size = new System.Drawing.Size(198, 20);
-            this.buttonAB.TabIndex = 0;
-            this.buttonAB.Text = "Add Brand";
-            this.buttonAB.UseVisualStyleBackColor = true;
-            this.buttonAB.Click += new System.EventHandler(this.buttonAB_Click);
-            // 
             // AddWatchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(529, 499);
-            this.Controls.Add(this.groupBox2);
+            this.ClientSize = new System.Drawing.Size(529, 426);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.groupBox1);
             this.Name = "AddWatchForm";
@@ -283,7 +246,6 @@ namespace LuxWatch.FormApp
             this.Load += new System.EventHandler(this.AddWatchForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -308,8 +270,5 @@ namespace LuxWatch.FormApp
         private System.Windows.Forms.Label labelBrand;
         private System.Windows.Forms.TextBox textBoxRefNum;
         private System.Windows.Forms.Button buttonAdd;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button buttonAM;
-        private System.Windows.Forms.Button buttonAB;
     }
 }

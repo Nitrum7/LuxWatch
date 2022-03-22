@@ -1,6 +1,5 @@
 ﻿using LuxWatch.Model;
 using LuxWatch.Service;
-using Scooters.FormApp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,14 +23,10 @@ namespace LuxWatch.FormApp
 
         private void AddWatchForm_Load(object sender, EventArgs e)
         {
-            LoadBrands();
-            LoadMaterial();
+            comboBoxBrand.Items.AddRange(services.GetBrandsName());
+            comboBoxMaterial.Items.AddRange(services.GetMaterialType());
             comboBoxCategory.Items.AddRange(services.GetCategorySex());
         }
-
-        
-
-
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             try
@@ -57,62 +52,6 @@ namespace LuxWatch.FormApp
             
         }
 
-        private void buttonAB_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                DialogForm dialogForm = new DialogForm("Enter new Brand: ");
-                if (dialogForm.ShowDialog() == DialogResult.OK)
-                {
-                    this.services.AddBrand(dialogForm.Result);
-                    MessageBox.Show("Brand added successfully");
-                }
-                else
-                {
-                    MessageBox.Show("You closed the dialog!");
-                }
-                LoadBrands();
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-
-        }
         
-
-        private void buttonAM_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                DialogForm dialogForm = new DialogForm("Enter new Material: ");
-                if (dialogForm.ShowDialog() == DialogResult.OK)
-                {
-                    this.services.AddMaterial(dialogForm.Result);
-                    MessageBox.Show("Material added successfully");
-                }
-                else
-                {
-                    MessageBox.Show("You closed the dialog!");
-                }
-                LoadMaterial();
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-        }
-        private void LoadBrands()
-        {
-            comboBoxBrand.Items.Clear();
-            comboBoxBrand.Items.AddRange(services.GetBrandsName());
-        }
-        private void LoadMaterial()
-        {
-            comboBoxMaterial.Items.Clear(); 
-            comboBoxMaterial.Items.AddRange(services.GetMaterialType());
-        }
     }
 }
