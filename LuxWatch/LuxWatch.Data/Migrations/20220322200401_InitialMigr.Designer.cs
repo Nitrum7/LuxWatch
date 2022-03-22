@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LuxWatch.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220313101832_NaskoMigr")]
-    partial class NaskoMigr
+    [Migration("20220322200401_InitialMigr")]
+    partial class InitialMigr
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,7 +44,6 @@ namespace LuxWatch.Data.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("Sex")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -80,6 +79,9 @@ namespace LuxWatch.Data.Migrations
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("MaterialId")
                         .HasColumnType("int");

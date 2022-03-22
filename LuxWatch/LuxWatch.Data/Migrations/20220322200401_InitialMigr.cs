@@ -2,7 +2,7 @@
 
 namespace LuxWatch.Data.Migrations
 {
-    public partial class LuxSex : Migration
+    public partial class InitialMigr : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,16 +20,16 @@ namespace LuxWatch.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Categorys",
+                name: "Categories",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Sex = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Sex = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categorys", x => x.Id);
+                    table.PrimaryKey("PK_Categories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -57,6 +57,7 @@ namespace LuxWatch.Data.Migrations
                     Size = table.Column<int>(type: "int", nullable: false),
                     MaterialId = table.Column<int>(type: "int", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Year = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
@@ -70,9 +71,9 @@ namespace LuxWatch.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Watches_Categorys_CategoryId",
+                        name: "FK_Watches_Categories_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "Categorys",
+                        principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -108,7 +109,7 @@ namespace LuxWatch.Data.Migrations
                 name: "Brands");
 
             migrationBuilder.DropTable(
-                name: "Categorys");
+                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Materials");

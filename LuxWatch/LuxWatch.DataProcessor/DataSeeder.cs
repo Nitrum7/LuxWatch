@@ -27,29 +27,29 @@
             List<Material> materials = new List<Material>();
             List<Category> categories = new List<Category>();
 
-            brands.Add(new Brand() { Name = "Rolex" });
-            brands.Add(new Brand() { Name = "Patek Philippe" });
-            brands.Add(new Brand() { Name = "Audemars Piguet" });
-            brands.Add(new Brand() { Name = "Richard Mille" });
-            brands.Add(new Brand() { Name = "Casio" });
-            brands.Add(new Brand() { Name = "Hamilton" });
-            brands.Add(new Brand() { Name = "Omega" });
-            brands.Add(new Brand() { Name = "Fossil" });
-            brands.Add(new Brand() { Name = "Bvlgari" });
+            brands.Add(new Brand() { Id = 1, Name = "Rolex" });
+            brands.Add(new Brand() { Id = 2, Name = "Patek Philippe" });
+            brands.Add(new Brand() { Id = 3, Name = "Audemars Piguet" });
+            brands.Add(new Brand() { Id = 4, Name = "Richard Mille" });
+            brands.Add(new Brand() { Id = 5, Name = "Casio" });
+            brands.Add(new Brand() { Id = 6, Name = "Hamilton" });
+            brands.Add(new Brand() { Id = 7, Name = "Omega" });
+            brands.Add(new Brand() { Id = 8, Name = "Fossil" });
+            brands.Add(new Brand() { Id = 9, Name = "Bvlgari" });
             service.AddBrands(brands);
 
-            materials.Add(new Material() { Type = "Stainless Steel" });
-            materials.Add(new Material() { Type = "Rose Gold" });
-            materials.Add(new Material() { Type = "Yellow Gold" });
-            materials.Add(new Material() { Type = "White Gold" });
-            materials.Add(new Material() { Type = "Platinium" });
-            materials.Add(new Material() { Type = "Saphire" });
-            materials.Add(new Material() { Type = "Titanium" });
+            materials.Add(new Material() { Id = 1, Type = "Stainless Steel" });
+            materials.Add(new Material() { Id = 2, Type = "Rose Gold" });
+            materials.Add(new Material() { Id = 3, Type = "Yellow Gold" });
+            materials.Add(new Material() { Id = 4, Type = "White Gold" });
+            materials.Add(new Material() { Id = 5, Type = "Platinium" });
+            materials.Add(new Material() { Id = 6, Type = "Saphire" });
+            materials.Add(new Material() { Id = 7, Type = "Titanium" });
             service.AddMaterials(materials);
 
-            categories.Add(new Category() { Sex = "Male" });
-            categories.Add(new Category() { Sex = "Female" });
-            categories.Add(new Category() { Sex = "Unisex" });
+            categories.Add(new Category() { Id = 1, Sex = "Male" });
+            categories.Add(new Category() { Id = 2, Sex = "Female" });
+            categories.Add(new Category() { Id = 3, Sex = "Unisex" });
             service.AddCategories(categories);
 
             for (int i = 0; i < 20; i++)
