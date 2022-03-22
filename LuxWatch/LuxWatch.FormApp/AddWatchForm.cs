@@ -21,7 +21,6 @@ namespace LuxWatch.FormApp
             InitializeComponent();
             this.services = services;
         }
-
         private void AddWatchForm_Load(object sender, EventArgs e)
         {
             LoadBrands();
