@@ -47,9 +47,9 @@
             // buttonPrev
             // 
             this.buttonPrev.Font = new System.Drawing.Font("Bahnschrift", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonPrev.Location = new System.Drawing.Point(12, 429);
+            this.buttonPrev.Location = new System.Drawing.Point(12, 437);
             this.buttonPrev.Name = "buttonPrev";
-            this.buttonPrev.Size = new System.Drawing.Size(75, 26);
+            this.buttonPrev.Size = new System.Drawing.Size(75, 34);
             this.buttonPrev.TabIndex = 1;
             this.buttonPrev.Text = "<<<";
             this.buttonPrev.UseVisualStyleBackColor = true;
@@ -80,9 +80,9 @@
             // buttonNext
             // 
             this.buttonNext.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonNext.Location = new System.Drawing.Point(351, 425);
+            this.buttonNext.Location = new System.Drawing.Point(351, 437);
             this.buttonNext.Name = "buttonNext";
-            this.buttonNext.Size = new System.Drawing.Size(75, 26);
+            this.buttonNext.Size = new System.Drawing.Size(75, 34);
             this.buttonNext.TabIndex = 4;
             this.buttonNext.Text = ">>>";
             this.buttonNext.UseVisualStyleBackColor = true;

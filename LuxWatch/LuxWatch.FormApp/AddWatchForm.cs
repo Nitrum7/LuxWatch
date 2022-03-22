@@ -1,5 +1,6 @@
 ﻿using LuxWatch.Model;
 using LuxWatch.Service;
+using Scooters.FormApp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,23 +24,15 @@ namespace LuxWatch.FormApp
 
         private void AddWatchForm_Load(object sender, EventArgs e)
         {
-            comboBoxBrand.Items.AddRange(services.GetBrandsName());
-            comboBoxMaterial.Items.AddRange(services.GetMaterialType());
-            comboBoxCategory.Items.AddRange(services.GetCategorySex());
+            LoadBrands();
+            LoadMaterials();
+            LoadCategory();
         }
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                string refNum = textBoxRefNum.Text;
-                string brand = comboBoxBrand.Text;
-                string model = textBoxModel.Text;
-                string material = comboBoxMaterial.Text;
-                string category = comboBoxCategory.Text;
-                string size = textBoxSize.Text;
-                string year = textBoxYear.Text;
-                string price = textBoxPrice.Text;
-                this.services.AddWatch(refNum, brand, model, material, category, size, year, price);
+                AddWatch();
                 MessageBox.Show("Watch Successfully Added");
             }
             catch (Exception ex)
@@ -47,11 +40,76 @@ namespace LuxWatch.FormApp
                 MessageBox.Show(ex.Message);
             }
         }
-        private void labelRefNum_Click(object sender, EventArgs e)
+        
+
+        private void buttonAB_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
+                DialogForm dialogForm = new DialogForm("Enter new Brand: ");
+                if (dialogForm.ShowDialog() == DialogResult.OK)
+                {
+                    this.services.AddBrand(dialogForm.Result);
+                    MessageBox.Show("Brand added successfully");
+                }
+                else
+                {
+                    MessageBox.Show("You closed the dialog!");
+                }
+                LoadBrands();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        
+        private void buttonAM_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogForm dialogForm = new DialogForm("Enter new Material: ");
+                if (dialogForm.ShowDialog() == DialogResult.OK)
+                {
+                    this.services.AddMaterial(dialogForm.Result);
+                    MessageBox.Show("Material added successfully");
+                }
+                else
+                {
+                    MessageBox.Show("You closed the dialog!");
+                }
+                LoadMaterials();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void LoadBrands()
+        {
+            comboBoxBrand.Items.Clear();
+            comboBoxBrand.Items.AddRange(services.GetBrandsName());
+        }
+        private void LoadMaterials()
+        {
+            comboBoxMaterial.Items.Clear();
+            comboBoxMaterial.Items.AddRange(services.GetMaterialType());
+        }
+        private void LoadCategory()
+        {
+            comboBoxCategory.Items.AddRange(services.GetCategorySex());
+        }
+        private void AddWatch()
+        {
+            string refNum = textBoxRefNum.Text;
+            string brand = comboBoxBrand.Text;
+            string model = textBoxModel.Text;
+            string material = comboBoxMaterial.Text;
+            string category = comboBoxCategory.Text;
+            string size = textBoxSize.Text;
+            string year = textBoxYear.Text;
+            string price = textBoxPrice.Text;
+            this.services.AddWatch(refNum, brand, model, material, category, size, year, price);
+        }
     }
 }
