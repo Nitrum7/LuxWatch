@@ -12,7 +12,7 @@ namespace LuxWatch.Web.App.Controllers
 {
     public class WatchesController : Controller
     {
-        private readonly AppDbContext _context=new AppDbContext();
+        private readonly AppDbContext _context = new AppDbContext();
 
 
         // GET: Watches
@@ -142,6 +142,35 @@ namespace LuxWatch.Web.App.Controllers
             return View(products);
         }
 
+        [HttpGet]
+        public IActionResult SearchByBrand()
+        {
+            List<Watch> products = new List<Watch>();
+            return View(products);
+        }
+        [HttpPost]
+        public IActionResult SearchByBrand(string brand)
+        {
+            List<Watch> products = _context.Watches
+                .Where(x => x.Brand.Name == brand)
+                .ToList();
+            return View(products);
+        }
+
+        [HttpGet]
+        public IActionResult SearchByMaterial()
+        {
+            List<Watch> products = new List<Watch>();
+            return View(products);
+        }
+        [HttpPost]
+        public IActionResult SearchByMaterial(string material)
+        {
+            List<Watch> products = _context.Watches
+                .Where(x => x.Material.Type == material)
+                .ToList();
+            return View(products);
+        }
 
         // GET: Watches/Delete/5
         public async Task<IActionResult> Delete(int? id)

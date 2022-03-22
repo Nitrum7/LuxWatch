@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<LuxWatch.Model.Watch>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Our Collection!";
 }
 
-<h1>Index</h1>
+<h1>Our Collection!</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -61,7 +61,7 @@
                 @Html.DisplayFor(modelItem => item.Material.Type)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Category.Id)
+                @Html.DisplayFor(modelItem => item.Category.Sex)
             </td>
             <td>
                 <img  src="@item.ImageUrl" width="250px" height="250px"/>
@@ -73,9 +73,10 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |*@
+                <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.Id">Details  </a>
+                
+                @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
             </td>
         </tr>
 }

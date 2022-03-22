@@ -24,7 +24,7 @@ namespace LuxWatch.WebApp.Controllers
             return View();
         }
 
-        public IActionResult Products()
+        public IActionResult Watches()
         {
             IndexWatchesViewModel model = new IndexWatchesViewModel();
             model.Watches = service.GetAllWatches()

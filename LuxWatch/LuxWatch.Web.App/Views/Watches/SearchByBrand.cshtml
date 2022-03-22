@@ -1,0 +1,87 @@
+﻿@model IEnumerable<LuxWatch.Model.Watch>
+
+<h1>Search by brand</h1>
+
+<form asp-action="SearchByBrand">
+    <div class="form-group">
+        <label class="control-label">Brand</label>       
+        <input type="text" name="brand" class="form-control">
+        <p></p>
+         <input type="submit" value="Search By Brand" class="btn btn-primary" />
+    </div>
+</form>
+
+<h3>Result</h3>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.RefNum)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Brand)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Model)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Size)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Material)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImageUrl)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Year)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RefNum)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Brand.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Model)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Size)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Material.Type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.Sex)
+                    </td>
+                    <td>
+                        <img src="@item.ImageUrl" width="250px" height="250px" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Year)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
