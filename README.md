@@ -1,3 +1,3 @@
 # LuxWatch
 Luxury Watches - Project
-.Nitrum Gagata, VELKO, Pepcha
+by Nikolay Gagov, Atanas Murtin, Peter Syleimezyan and Ivan Cheshmedjiev
