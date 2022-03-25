@@ -1,18 +1,11 @@
-﻿using LuxWatch.Model;
-using LuxWatch.Service;
-using Scooters.FormApp;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace LuxWatch.FormApp
+﻿namespace LuxWatch.FormApp
 {
+    using LuxWatch.Service;
+    using Scooters.FormApp;
+    using System;
+    using System.Windows.Forms;
+
+
     public partial class AddWatchForm : Form
     {
         private readonly Services services;
@@ -32,7 +25,7 @@ namespace LuxWatch.FormApp
             try
             {
                 AddWatch();
-                MessageBox.Show("Watch Successfully Added");
+                MessageBox.Show("Watch successfully added");
             }
             catch (Exception ex)
             {
@@ -47,7 +40,7 @@ namespace LuxWatch.FormApp
         {
             try
             {
-                DialogForm dialogForm = new DialogForm("Enter new Brand: ");
+                DialogForm dialogForm = new DialogForm("Enter new brand: ");
                 if (dialogForm.ShowDialog() == DialogResult.OK)
                 {
                     this.services.AddBrand(dialogForm.Result);
@@ -68,7 +61,7 @@ namespace LuxWatch.FormApp
         {
             try
             {
-                DialogForm dialogForm = new DialogForm("Enter new Material: ");
+                DialogForm dialogForm = new DialogForm("Enter new material: ");
                 if (dialogForm.ShowDialog() == DialogResult.OK)
                 {
                     this.services.AddMaterial(dialogForm.Result);

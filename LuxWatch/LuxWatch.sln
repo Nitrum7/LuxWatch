@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuxWatch.Service", "LuxWatc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuxWatch.Model", "LuxWatch.Model\LuxWatch.Model.csproj", "{2853826B-E57D-4226-9F5A-1842E1EF7806}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuxWatch.ConsoleAp", "LuxWatch.ConsoleAp\LuxWatch.ConsoleAp.csproj", "{A7C55B1C-09DE-4CD4-8CC8-1F1AD337E226}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuxWatch.ConsoleApp", "LuxWatch.ConsoleAp\LuxWatch.ConsoleApp.csproj", "{A7C55B1C-09DE-4CD4-8CC8-1F1AD337E226}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuxWatch.DataProcessor", "LuxWatch.DataProcessor\LuxWatch.DataProcessor.csproj", "{2A64CAA2-34AA-4652-93C1-1F8E65C27FB8}"
 EndProject

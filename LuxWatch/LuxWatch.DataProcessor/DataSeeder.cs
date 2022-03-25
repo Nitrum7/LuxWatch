@@ -15,7 +15,6 @@
         }
         public void SeedWatches()
         {
-            //string imageUrl = "https://freepngimg.com/thumb/coming_soon/4-2-coming-soon-png.png";
 
             if (service.GetWatches().Any())
             {

@@ -21,7 +21,7 @@
                 try
                 {
                     Console.WriteLine("\nSelect:\nWC(To get watches' count)\nGW(To find a watch by reference number)\nGBN(To get all available brands)\nGWBB(To get all watches by their brand)\nAW(To add a watch)\nUP(To update a watch's price)" +
-                        "\nUS(To update a watch's size)\nDW(To delete a watch)\nAM(Add new material)\nAB(Add new brand)\nDB(Delete a brand)\nDM(Delete a material)\nQ(quit application)");
+                        "\nUS(To update a watch's size)\nDW(To delete a watch)\nAM(To add a new material)\nAB(To add a new brand)\nDB(To delete a brand)\nDM(To delete a material)\nQ(Quit application)");
                     string option = Console.ReadLine().ToUpper();
 
                     switch (option)
@@ -80,7 +80,7 @@
         }
         public void GetWatchesByMateral()
         {
-            Console.WriteLine("Input Material: ");
+            Console.WriteLine("Input material: ");
             string type = Console.ReadLine();
 
             foreach (var w in services.GetWatchesByMaterial(type))
@@ -88,21 +88,18 @@
                 Console.WriteLine();
                 services.PrintWatch(w);
             }
-
         }
 
         public void GetWatchesCount()
         {
-            Console.WriteLine($"Waches Count{services.WatchCount()}");
-            
+            Console.WriteLine($"Waches count{services.WatchCount()}");          
         }
 
         public void GetWatch()
         {
             Console.WriteLine("Input watch reference number:");
             string input = Console.ReadLine();
-            services.PrintWatch(services.GetWatch(input));
-            
+            services.PrintWatch(services.GetWatch(input));           
         }
 
         public void GetBrandsName()
@@ -110,8 +107,7 @@
             foreach (var b in services.GetBrandsName())
             {
                 Console.WriteLine(b.ToString());
-            }
-            
+            }           
         }
 
         public void GetWatchesByBrand()
@@ -122,110 +118,105 @@
             foreach (var w in services.GetWatchesByBrand(brand))
             {
                 services.PrintWatch(w);
-            }
-            
+            }           
         }
         public void AddMaterial()
         {
             Console.WriteLine("Input material type: ");
             string materal = Console.ReadLine();
             services.AddMaterial(materal);
-            Console.WriteLine("Material Successfully Added!");
+            Console.WriteLine("Material successfully added!");
         }
         public void AddBrand()
         {
             Console.WriteLine("Input brand name: ");
             string name = Console.ReadLine();
             services.AddBrand(name);
-            Console.WriteLine("Brand Successfully Added!");
+            Console.WriteLine("Brand successfully added!");
         }
 
         public void AddWatch()
         {
-            Console.WriteLine("Input Reference Number:");
+            Console.WriteLine("Input reference number:");
             string refnum = Console.ReadLine();
             Console.Clear();
 
-            Console.WriteLine("Input Brand:");
+            Console.WriteLine("Input brand:");
             string brand = Console.ReadLine();
             Console.Clear();
 
-            Console.WriteLine("Input Model:");
+            Console.WriteLine("Input model:");
             string model = Console.ReadLine();
             Console.Clear();
 
-            Console.WriteLine("Input Material:");
+            Console.WriteLine("Input material:");
             string material = Console.ReadLine();
             Console.Clear();
 
-            Console.WriteLine("Input Catergory:");
+            Console.WriteLine("Input catergory(Male, Female, Unisex):");
             string category = Console.ReadLine();
             Console.Clear();
 
-            Console.WriteLine("Input Size:");
+            Console.WriteLine("Input size:");
             string size = Console.ReadLine();
             Console.Clear();
 
-            Console.WriteLine("Input Year:");
+            Console.WriteLine("Input year:");
             string year = Console.ReadLine();
             Console.Clear();
 
-            Console.WriteLine("Input Price:");
+            Console.WriteLine("Input price:");
             string price = Console.ReadLine();
             Console.Clear();
 
             services.AddWatch(refnum, brand, model, material, category, size, year, price);
-            Console.WriteLine("Watch Added Successfully!");
-            
+            Console.WriteLine("Watch added successfully!");           
         }
 
         public void UpdatePrice()
         {
-            Console.WriteLine("Input Watch Reference Number and New Price:");
+            Console.WriteLine("Input watch reference number and new price:");
             string input = Console.ReadLine();
             string refNum = input.Split(' ')[0];
             string price = input.Split(' ')[1];
 
             services.UpdateWatchPrice(refNum, price);
-            Console.WriteLine("Watch Price Updated Successfully!");
+            Console.WriteLine("Watch price updated successfully!");
             
         }
 
         public void UpdateSize()
         {
-            Console.WriteLine("Input Watch Reference Number and New Size:");
+            Console.WriteLine("Input watch reference number and new size:");
             string input = Console.ReadLine();
             string refNum = input.Split(' ')[0];
             string size = input.Split(' ')[1];
 
             services.UpdateWatchSize(refNum, size);
-            Console.WriteLine("Watch Size Updated Successfully!");
-           
+            Console.WriteLine("Watch size updated successfully!");           
         }
 
         public void DeleteWatch()
         {
-            Console.WriteLine("Input Watch Reference Number:");
+            Console.WriteLine("Input watch reference number:");
             string refnum = Console.ReadLine();
             services.DeleteWatch(refnum);
-            Console.WriteLine("Watch Successfully Deleted!");
-            
+            Console.WriteLine("Watch successfully deleted!");           
         }
         public void DeleteBrand()
         {
-            Console.WriteLine("Input Brand Name:");
+            Console.WriteLine("Input brand name:");
             string name = Console.ReadLine();
             services.DeleteBrand(name);
-            Console.WriteLine("Brand Successfully Deleted!");
+            Console.WriteLine("Brand successfully deleted!");
 
         }
         public void DeleteMaterial()
         {
-            Console.WriteLine("Input Material Type:");
+            Console.WriteLine("Input material type:");
             string type = Console.ReadLine();
             services.DeleteMaterial(type);
-            Console.WriteLine("Material Successfully Deleted!");
-
+            Console.WriteLine("Material successfully deleted!");
         }
     }
 }

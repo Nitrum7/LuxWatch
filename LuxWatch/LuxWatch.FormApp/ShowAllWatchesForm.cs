@@ -1,18 +1,14 @@
-﻿using LuxWatch.Model;
-using LuxWatch.Service;
-using Scooters.FormApp;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace LuxWatch.FormApp
+﻿namespace LuxWatch.FormApp
 {
+    using LuxWatch.Model;
+    using LuxWatch.Service;
+    using Scooters.FormApp;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Windows.Forms;
+
+
     public partial class ShowAllWatchesForm : Form
     {
         private int currentPage = 1;
@@ -41,7 +37,7 @@ namespace LuxWatch.FormApp
         {
             try
             {
-                DialogForm dialogForm = new DialogForm("Ref. Num ");
+                DialogForm dialogForm = new DialogForm("Ref. number ");
                 if (dialogForm.ShowDialog() == DialogResult.OK)
                 {
                     this.services.DeleteWatch(dialogForm.Result);
@@ -94,12 +90,12 @@ namespace LuxWatch.FormApp
         {
             try
             {
-                DialogForm dialogRefNum = new DialogForm("Ref. Num ");
+                DialogForm dialogRefNum = new DialogForm("Ref. number ");
                 if (dialogRefNum.ShowDialog() == DialogResult.OK)
                 {
                     string refNum = dialogRefNum.Result;
                     dialogRefNum.Close();
-                    DialogForm dialogSize = new DialogForm("New Size: ");
+                    DialogForm dialogSize = new DialogForm("New size: ");
                     if (dialogSize.ShowDialog() == DialogResult.OK)
                     {
                         string size = dialogSize.Result;
@@ -190,12 +186,12 @@ namespace LuxWatch.FormApp
         {
             try
             {
-                DialogForm dialogRefNum = new DialogForm("Ref. Num ");
+                DialogForm dialogRefNum = new DialogForm("Ref. number ");
                 if (dialogRefNum.ShowDialog() == DialogResult.OK)
                 {
                     string refNum = dialogRefNum.Result;
                     dialogRefNum.Close();
-                    DialogForm dialogPrice = new DialogForm("New Price: ");
+                    DialogForm dialogPrice = new DialogForm("New price: ");
                     if (dialogPrice.ShowDialog()==DialogResult.OK)
                     {
                         string price = dialogPrice.Result;

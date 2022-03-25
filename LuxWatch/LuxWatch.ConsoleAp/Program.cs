@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LuxWatch.ConsoleAp
+﻿namespace LuxWatch.ConsoleAp
 {
     internal class Program
     {

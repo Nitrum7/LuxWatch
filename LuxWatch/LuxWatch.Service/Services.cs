@@ -1,12 +1,10 @@
 ﻿namespace LuxWatch.Service
 {
-
     using Data;
     using Model;
     using System.Linq;
     using System.Collections.Generic;
     using System;
-    using System.ComponentModel.DataAnnotations;
 
     public class Services
     {
@@ -142,7 +140,7 @@
             int count = 1;
             if (string.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentException("Invalid Brand!");
+                throw new ArgumentException("Invalid brand!");
             }
             var a = this.context.Brands.Where(x => x.Name != null).ToList();
             foreach (var brand1 in a)
@@ -239,21 +237,21 @@
 
             if (!int.TryParse(size, out _))
             {
-                throw new ArgumentException("Invalid Size!");
+                throw new ArgumentException("Invalid size!");
             }
             if (int.Parse(size) < 29 || int.Parse(size) > 50)
             {
-                throw new ArgumentException("Invalid Size!");
+                throw new ArgumentException("Invalid size!");
             }
 
             if (!(int.Parse(year) <= DateTime.Today.Year && int.Parse(year) >= 1880))
             {
-                throw new ArgumentException("Invalid Year!");
+                throw new ArgumentException("Invalid year!");
             }
 
             if (!decimal.TryParse(price, out _))
             {
-                throw new ArgumentException("Invalid Price!");
+                throw new ArgumentException("Invalid price!");
             }
 
             Watch watch = new Watch()
@@ -428,11 +426,11 @@
 
         public string PrintWatchForm(Watch watch)
         {
-            return ($"Reference Number: {watch.RefNum}\nBrand: {watch.Brand.Name}\nModel: {watch.Model}\nSize: {watch.Size}\nMaterial: {watch.Material.Type}\nCategory: {watch.Category.Sex}\nYear: {watch.Year}\nPrice: {watch.Price}\n{new string('-', 50)}\n");
+            return ($"Reference number: {watch.RefNum}\nBrand: {watch.Brand.Name}\nModel: {watch.Model}\nSize: {watch.Size}\nMaterial: {watch.Material.Type}\nCategory: {watch.Category.Sex}\nYear: {watch.Year}\nPrice: {watch.Price}\n{new string('-', 50)}\n");
         }
         public void PrintWatch(Watch watch)
         {
-            Console.WriteLine($"Reference Number: {watch.RefNum}\nBrand: {watch.Brand.Name}\nModel: {watch.Model}\nSize: {watch.Size}\nMaterial: {watch.Material.Type}\nCategory: {watch.Category.Sex}\nYear: {watch.Year}\nPrice: {watch.Price}");
+            Console.WriteLine($"Reference number: {watch.RefNum}\nBrand: {watch.Brand.Name}\nModel: {watch.Model}\nSize: {watch.Size}\nMaterial: {watch.Material.Type}\nCategory: {watch.Category.Sex}\nYear: {watch.Year}\nPrice: {watch.Price}");
         }
 
         public void AddBrands(List<Brand> brands)
@@ -442,7 +440,7 @@
                 int count = 1;
                 if (string.IsNullOrWhiteSpace(name.Name))
                 {
-                    throw new ArgumentException("Invalid Brand!");
+                    throw new ArgumentException("Invalid brand!");
                 }
                 var a = this.context.Brands.Where(x => x.Name != null).ToList();
                 foreach (var brand1 in a)
