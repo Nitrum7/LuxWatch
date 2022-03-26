@@ -92,7 +92,7 @@
 
         public void GetWatchesCount()
         {
-            Console.WriteLine($"Waches count{services.WatchCount()}");          
+            Console.WriteLine($"Waches count: {services.WatchCount()}");          
         }
 
         public void GetWatch()
