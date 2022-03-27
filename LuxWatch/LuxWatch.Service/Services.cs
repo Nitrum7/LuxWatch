@@ -430,7 +430,7 @@
         }
         public void PrintWatch(Watch watch)
         {
-            Console.WriteLine($"Reference number: {watch.RefNum}\nBrand: {watch.Brand.Name}\nModel: {watch.Model}\nSize: {watch.Size}\nMaterial: {watch.Material.Type}\nCategory: {watch.Category.Sex}\nYear: {watch.Year}\nPrice: {watch.Price}$");
+            Console.WriteLine($"Reference number: {watch.RefNum}\nBrand: {watch.Brand.Name}\nModel: {watch.Model}\nSize: {watch.Size}\nMaterial: {watch.Material.Type}\nCategory: {watch.Category.Sex}\nYear: {watch.Year}\nPrice: {watch.Price}$ ");
         }
 
         public void AddBrands(List<Brand> brands)
